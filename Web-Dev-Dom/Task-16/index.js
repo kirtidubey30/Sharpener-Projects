@@ -25,7 +25,7 @@ function displayUserEntries() {
   const users = JSON.parse(localStorage.getItem('users')) || [];
   users.forEach((user, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${user.username} (${user.email}, ${user.phone})`;
+    listItem.textContent = `${user.username} - ${user.email} - ${user.phone} `;
 
     // Create the Delete and Edit buttons using innerHTML
     listItem.innerHTML += `

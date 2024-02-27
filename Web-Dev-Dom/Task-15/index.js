@@ -47,7 +47,7 @@ function displayUserEntries() {
   // Create list items for each user
   users.forEach((user, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${user.username} (${user.email}, ${user.phone})`;
+    listItem.textContent = `${user.username} - ${user.email} - ${user.phone}`;
 
     // Create a delete button
     const deleteButton = document.createElement('button');
