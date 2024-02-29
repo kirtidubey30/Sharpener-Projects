@@ -34,8 +34,8 @@ function displayUserDetails() {
   dataOfExistingUser.forEach((user, index) => {
     const liTag = document.createElement('li');
     liTag.textContent = `${user.expenseName} - ${user.desc} - ${user.category}`;
-    liTag.innerHTML += `<button onClick="editUser(${index})">Edit</button>
-                       <button onClick="deleteUser(${index})">Delete</button>`;
+    liTag.innerHTML += `<button class="col-1 edit-button" onClick="editUser(${index})">Edit</button>
+                       <button class="col-1 delete-button" onClick="deleteUser(${index})">Delete</button>`;
     userLists.appendChild(liTag);
   });
 }
