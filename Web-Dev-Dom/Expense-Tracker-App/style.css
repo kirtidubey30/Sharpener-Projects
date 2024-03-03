@@ -1,0 +1,103 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  /* background-color: #fff; */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #5e585854;
+}
+
+button {
+  background-color: #b6bdc69e;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #d4d9dc3d;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  /* background-color: #fff; */
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: baseline;
+  justify-content: space-around;
+  display: flex;
+  border-top: 2px solid #c3c0c2;
+  border-bottom: 2px solid #c3c0c2;
+}
+.heading {
+  color: #4c4a4a;
+  font-style: normal;
+  font-synthesis-weight: 502;
+  font-weight: bolder;
+  font-size: xxx-large;
+}
+
+button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+#userLists.li {
+    display: flex;
+    justify-content: space-around;
+    /* background-color: #fff; */
+    background: #5e585854;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#userLists {
+  min-height: 21rem;
+  max-height: 22rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.edit-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.delete-button {
+  background-color: #dc3545; /* Red color for delete button */
+  color: #fff;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
