@@ -1,63 +1,84 @@
-
-document.addEventListener('DOMContentLoaded',function () {
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log('inisde handleFormSubmit');
-    axios.get("https://crudcrud.com/api/39a8e09c2df0440a8366bb24ebc4d2b1/appointmentData")
-      .then((response) => {
-        const data = response.data;
-        console.log("data = ",data);
-        const userList = document.querySelector('ul');
-        userList.innerHTML = '';
-        data.forEach((element) => {
-          //create an li element 
-          let liTag = document.createElement('li');
-          //add a textContent to each element
-          liTag.textContent = `${element.username} - ${element.email} - ${element.phone}`;
-
-          //add the edit and delete button using innerHtml Property
-          liTag.innerHTML += `<button claa="editButton" onClick="editUser('${element._id}')">Edit</button> 
-          <button class="deleteButton" onClick="deleteUser('${element._id}')">Delete</button>`
-
-          //append the element with userList 
-          userList.append(liTag);
-        })
-  })
-      .catch((error) => console.log(error));
-  }
-  const form = document.querySelector('form');
-  form.addEventListener('submit',handleFormSubmit);
-
-  //handle the case where the function is called after dom is loaded
-  handleFormSubmit({preventDefault: () => {} });
-})
-function editUser(dataId) {
-  console.log(`id of editUser is ${dataId}`);
-  axios.put("https://crudcrud.com/api/39a8e09c2df0440a8366bb24ebc4d2b1/appointmentData/${dataId}")
-  .then((result) => {
-    
-      console.log('succesfully modified the data');
- 
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
-function deleteUser(dataId) {
-  // Send a DELETE request to the backend API
-  axios.delete(`https://crudcrud.com/api/39a8e09c2df0440a8366bb24ebc4d2b1/appointmentData/${dataId}`)
+document.addEventListener('DOMContentLoaded', function () {
+  // Add an event listener for the DOMContentLoaded event
+  // This function will be executed once the DOM is fully loaded
+  axios.get("https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData")
     .then((response) => {
-      if (response.status === 200) {
-        // Find the corresponding list item and remove it from the DOM
-        const listItem = document.querySelector(`[data-id="${dataId}"]`);
-        if (listItem) {
-          listItem.remove();
-        }
-      }
+      // After the GET request, display the user data on the screen
+      response.data.forEach((userDetails) => {
+        displayUserOnScreen(userDetails);
+      });
+    })
+    .catch((error) => console.log(error));
+
+  // Add an event listener for the form submission
+  // const form = document.querySelector('form');
+  // form.addEventListener('submit', handleFormSubmit);
+});
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const userDetails = {
+    username: event.target.username.value,
+    email: event.target.email.value,
+    phone: event.target.phone.value,
+  };
+  axios
+    .post(
+      "https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData",
+      userDetails
+    )
+    .then((response) => {
+      displayUserOnScreen(response.data)
+      // Clearing the input fields
+     document.getElementById("username").value = "";
+     document.getElementById("email").value = "";
+     document.getElementById("phone").value = "";
     })
     .catch((error) => console.log(error));
 }
 
-// Do not touch code below
-module.exports = handleFormSubmit;
+function displayUserOnScreen(userDetails) {
+  const userItem = document.createElement("li");
+  userItem.appendChild(
+    document.createTextNode(
+      `${userDetails.username} - ${userDetails.email} - ${userDetails.phone}`
+    )
+  );
 
+  const deleteBtn = document.createElement("button");
+  deleteBtn.appendChild(document.createTextNode("Delete"));
+  userItem.appendChild(deleteBtn);
+
+  const editBtn = document.createElement("button");
+  editBtn.appendChild(document.createTextNode("Edit"));
+  userItem.appendChild(editBtn);
+
+  const userList = document.querySelector("ul");
+  userList.appendChild(userItem);
+
+  deleteBtn.addEventListener("click", function (event) {
+    userList.removeChild(event.target.parentElement);
+    //localStorage.removeItem(userDetails.email);
+    axios.delete(`https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData/${userDetails._id}`)
+    .then((result) => {
+      console.log('Deleted the data  and result =',result);
+    })
+    .catch((error) => console.log(error));
+  });
+
+  editBtn.addEventListener("click", function (event) {
+    userList.removeChild(event.target.parentElement);
+    //localStorage.removeItem(userDetails._id);
+    console.log("userDetails value before calling delete from edit ",userDetails);
+    document.getElementById("username").value = userDetails.username;
+    document.getElementById("email").value = userDetails.email;
+    document.getElementById("phone").value = userDetails.phone;
+    axios.delete(`https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData/${userDetails._id}`)
+    .then((result) => {
+      console.log('Deleted the data and populate to input fields and result is =',result);
+    })
+    .catch((error) => console.log(error));
+  });
+}
+
+// Do not touch code below
+//module.exports = handleFormSubmit;
