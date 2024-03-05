@@ -1,7 +1,8 @@
+const endPoint = "https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData";
 document.addEventListener('DOMContentLoaded', function () {
   // Add an event listener for the DOMContentLoaded event
   // This function will be executed once the DOM is fully loaded
-  axios.get("https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData")
+  axios.get(`${endPoint}`)
     .then((response) => {
       // After the GET request, display the user data on the screen
       response.data.forEach((userDetails) => {
@@ -22,10 +23,7 @@ function handleFormSubmit(event) {
     phone: event.target.phone.value,
   };
   axios
-    .post(
-      "https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData",
-      userDetails
-    )
+    .post(`${endPoint}`,userDetails)
     .then((response) => {
       displayUserOnScreen(response.data)
       // Clearing the input fields
@@ -58,7 +56,7 @@ function displayUserOnScreen(userDetails) {
   deleteBtn.addEventListener("click", function (event) {
     userList.removeChild(event.target.parentElement);
     //localStorage.removeItem(userDetails.email);
-    axios.delete(`https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData/${userDetails._id}`)
+    axios.delete(`${endPoint}/${userDetails._id}`)
     .then((result) => {
       console.log('Deleted the data  and result =',result);
     })
@@ -72,7 +70,7 @@ function displayUserOnScreen(userDetails) {
     document.getElementById("username").value = userDetails.username;
     document.getElementById("email").value = userDetails.email;
     document.getElementById("phone").value = userDetails.phone;
-    axios.delete(`https://crudcrud.com/api/bda438dbb36a40aba87c6c0536be9bda/appointmentData/${userDetails._id}`)
+    axios.delete(`${endPoint}/${userDetails._id}`)
     .then((result) => {
       console.log('Deleted the data and populate to input fields and result is =',result);
     })
