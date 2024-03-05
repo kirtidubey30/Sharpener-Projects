@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+</head>
+<body style="margin-left: 2rem;">
+  <h1 style="display: flex;justify-content: center; " class="heading">Class Monitor Vote</h1>
+  <!-- <h3 style="display: flex;justify-content: center;">Total Votes : </h3> -->
+  <form>
+    <label for="Sname">Student Name
+      <input type="text" id="Sname">
+    </label>
+    <label for="MontiorOptions">Choose Monitor
+      <select name="MontiorOptions" id="MontiorOptions">
+        <option value="Suresh">Suresh </option>
+        <option value="Deepak">Deepak </option>
+        <option value="Abhik">Abhik </option>
+      </select>
+    </label>
+    <button onClick="vote(event)">Vote</button>
+  </form>
+  <div id="candidateList"> 
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<script src="index.js"></script>
+</html>
