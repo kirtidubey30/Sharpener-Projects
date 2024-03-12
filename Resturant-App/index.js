@@ -1,5 +1,4 @@
-const endPoint = "https://crudcrud.com/api/b0489c9630df4443af7dd8cf91b44170/orderDetails";
-let lastSelectedTable = ''; // Variable to store the last selected table
+const endPoint = "https://crudcrud.com/api/c14f18b817c3426baeb24cdb02c6c4ae/orderDetails";
 
 function addOrder(event) {
   event.preventDefault();
@@ -19,7 +18,7 @@ function addOrder(event) {
       displayData(result.data);
       document.getElementById('price').value = '';
       document.getElementById('dish').value = '';
-      document.getElementById('chooseTable').value = '';
+      document.getElementById('chooseTable').value = 'Table1';
     })
     .catch((error) => {
       console.log(error);
@@ -28,7 +27,7 @@ function addOrder(event) {
 
 function displayData(data) {
   // Use the last selected table if available; otherwise, use the value from data
-  var selectedTable = lastSelectedTable || data.table;
+  var selectedTable = data.table;
   var selectedElement = document.getElementById(selectedTable);
 
   // Create a new div element
@@ -42,6 +41,7 @@ function displayData(data) {
   // Create a delete button
   var deleteButton = document.createElement('button');
   deleteButton.innerHTML = 'Delete';
+  deleteButton.style.marginLeft = '0.5rem';
 
   // Add a click event listener to the delete button
   deleteButton.addEventListener('click', function() {
@@ -74,7 +74,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Update the last selected table when the dropdown changes
-document.getElementById('chooseTable').addEventListener('change', function() {
-  lastSelectedTable = this.value;
-});
