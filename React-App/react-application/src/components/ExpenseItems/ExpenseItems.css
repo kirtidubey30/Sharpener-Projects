@@ -27,3 +27,8 @@
 .hrStyle {
   margin-top: 3rem;
 }
+.expensesParentDiv {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
