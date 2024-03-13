@@ -22,3 +22,9 @@
   color: white;
   cursor: pointer;
 }
+.btn-clickMe {
+  margin-left: 0.2rem;
+  background-color: #00178091;
+  color: white;
+  cursor: pointer;
+}
