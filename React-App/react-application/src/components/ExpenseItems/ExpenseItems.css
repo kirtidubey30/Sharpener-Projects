@@ -25,10 +25,15 @@
   width: 5rem;
 }
 .hrStyle {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 .expensesParentDiv {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+.singleElement {
+  margin: auto;
+  inset: 0;
+  position: relative;
 }

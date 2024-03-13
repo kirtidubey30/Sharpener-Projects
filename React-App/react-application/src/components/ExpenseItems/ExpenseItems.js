@@ -23,15 +23,24 @@ function ExpenseItems() {
   };
   return (
     <div>
-      <div className="expensesParentDiv">
-        {selectedFilterExpenses.map((expense) => (
-          <div key={expense.id} className="items">
-            <div className="data">{expense.title}</div>
-            <div className="data">{expense.date.toLocaleDateString()}</div>
-            <button className="btn-price">{expense.amount}</button>
-          </div>
-        ))}
-      </div>
+      {selectedFilterExpenses.length <= 0 ? (
+        <p style={{ color: "black" }}>No data Found !!!</p>
+      ) : (
+        <div className="expensesParentDiv">
+          {selectedFilterExpenses.map((expense) => (
+            <div key={expense.id} className="items">
+              <div className="data">{expense.title}</div>
+              <div className="data">{expense.date.toLocaleDateString()}</div>
+              <button className="btn-price">{expense.amount}</button>
+            </div>
+          ))}
+          {selectedFilterExpenses.length == 1 && (
+            <p className="singleElement">
+              Only single Expense here. Please add more...
+            </p>
+          )}
+        </div>
+      )}
       <div className="hrStyle">
         <hr />
       </div>

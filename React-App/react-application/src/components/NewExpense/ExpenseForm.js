@@ -18,9 +18,11 @@ const ExpenseForm = (props) => {
     setAmount("");
     setDate("");
     setTitle("");
+    setSelectedYear(selectedYear);
+    handleFilterChange(null, selectedYear);
   };
-  const handleFilterChange = (event) => {
-    const year = event.target.value;
+  const handleFilterChange = (event, val) => {
+    const year = val.length == 0 ? event.target.value : val;
     setSelectedYear(year);
     props.onYearFilterChange(year);
   };
@@ -31,7 +33,7 @@ const ExpenseForm = (props) => {
           Filter
           <select
             id="filterYear"
-            onChange={handleFilterChange}
+            onChange={(event) => handleFilterChange(event, "")}
             value={selectedYear}
           >
             <option value="">Select Year</option>
@@ -40,6 +42,7 @@ const ExpenseForm = (props) => {
             <option value="2022">2022</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>
+            <option value="2019">2019</option>
           </select>
         </label>
         <h1>Expense Form</h1>
