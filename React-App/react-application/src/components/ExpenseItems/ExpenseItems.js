@@ -11,7 +11,7 @@ function ExpenseItems() {
       id: Math.random().toString(),
     };
     console.log("val of eneteredData from parentElement = ", enteredData);
-    setExpense((prevExpenses) => [...prevExpenses, enteredData]);
+    setExpense((prevExpenses) => [enteredData, ...prevExpenses]);
   };
   return (
     <div>
@@ -22,8 +22,8 @@ function ExpenseItems() {
           flexWrap: "wrap",
         }}
       >
-        {expenses.map((expense, index) => (
-          <div key={index} className="items">
+        {expenses.map((expense) => (
+          <div key={expense.id} className="items">
             <div className="data">{expense.title}</div>
             <div className="data">{expense.date.toLocaleDateString()}</div>
             <button className="btn-price">{expense.amount}</button>
