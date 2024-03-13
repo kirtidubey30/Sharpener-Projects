@@ -2,7 +2,7 @@ import ExpenseItems from "./components/ExpenseItems/ExpenseItems";
 import { useState } from "react";
 import "./App.css";
 import expenseObj from "../src/components/Data/ExpensesData";
-import ExpenseForm from "./components/ExpenseItems/ExpenseForm";
+import ExpenseForm from "./components/NewExpense/ExpenseForm";
 
 function App() {
   const expenseTitle = "Expense Items ";
