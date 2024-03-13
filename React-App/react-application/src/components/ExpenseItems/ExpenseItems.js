@@ -1,26 +1,39 @@
 import "./ExpenseItems.css";
+import ExpenseForm from "../NewExpense/ExpenseForm";
+import expenseObj from "../Data/ExpensesData";
 import { useState } from "react";
-function ExpenseItems(props) {
-  const clickHandler = () => {
-    props.onDelete();
-  };
-  const [clickMeText, setClickMeText] = useState("Click Me");
-  const clickMeHandler = () => {
-    setClickMeText("100$");
+function ExpenseItems() {
+  const [expenses, setExpense] = useState(expenseObj);
+  const onSaveExpDataHandler = (eneteredExpData) => {
+    console.log("eneteredExpData =", eneteredExpData);
+    const enteredData = {
+      ...eneteredExpData,
+      id: Math.random().toString(),
+    };
+    console.log("val of eneteredData from parentElement = ", enteredData);
+    setExpense((prevExpenses) => [...prevExpenses, enteredData]);
   };
   return (
-    <div style={{ display: "inline-block" }}>
-      <span className="items">
-        <div className="data">{props.expenseData}</div>
-        <div className="data">{props.LocationOfExpenditure}</div>
-        <button className="btn-price">{props.price}</button>
-        <button className="btn-delete" onClick={clickHandler}>
-          Delete
-        </button>
-        <button className="btn-clickMe" onClick={clickMeHandler}>
-          {clickMeText}
-        </button>
-      </span>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexWrap: "wrap",
+        }}
+      >
+        {expenses.map((expense, index) => (
+          <div key={index} className="items">
+            <div className="data">{expense.title}</div>
+            <div className="data">{expense.date.toLocaleDateString()}</div>
+            <button className="btn-price">{expense.amount}</button>
+          </div>
+        ))}
+      </div>
+      <div className="hrStyle">
+        <hr />
+      </div>
+      <ExpenseForm onSaveExpenseData={onSaveExpDataHandler} />
     </div>
   );
 }

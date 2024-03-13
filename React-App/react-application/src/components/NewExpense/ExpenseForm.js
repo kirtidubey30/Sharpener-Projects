@@ -1,24 +1,23 @@
 import "./ExpenseForm.css";
-import NewExpenseData from "../Data/NewExpenseData";
 import { useState } from "react";
-const ExpenseForm = () => {
-  // const [title, setTitle] = useState(NewExpenseData[0].title);
-  // const [amount, setAmount] = useState(NewExpenseData[0].amount);
-  // const [date, setDate] = useState(NewExpenseData[0].date);
+const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
   const clickHandler = (event) => {
     event.preventDefault();
     const formData = {
-      title: { title },
-      amount: { amount },
-      date: { date },
+      title: title,
+      amount: amount,
+      date: new Date(date),
     };
     console.log(
       `Expense Title = ${title} \n Expense Amount = ${amount} \n Expense Date = ${date}`
     );
-    console.log(formData);
+    props.onSaveExpenseData(formData);
+    setAmount("");
+    setDate("");
+    setTitle("");
   };
   return (
     <div className="formContainer">
@@ -52,7 +51,7 @@ const ExpenseForm = () => {
           />
         </label>
         <button className="saveBtn" onClick={clickHandler}>
-          Save
+          Add Expense
         </button>
       </form>
     </div>

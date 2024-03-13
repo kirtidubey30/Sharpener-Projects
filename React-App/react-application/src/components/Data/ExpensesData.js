@@ -1,48 +1,33 @@
 const expenseObj = [
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Food",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Movie",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Maintainance",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Books",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Travel",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
   {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
-  },
-  {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
-  },
-  {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
-  },
-  {
-    expenseData: "Food",
-    price: 250,
-    LocationOfExpenditure: "Raipur",
+    title: "Gadjets",
+    amount: 250,
+    date: new Date("2024-03-12"),
   },
 ];
 
