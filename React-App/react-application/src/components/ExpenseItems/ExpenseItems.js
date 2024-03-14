@@ -1,13 +1,15 @@
 import "./ExpenseItems.css";
 import ExpenseForm from "../NewExpense/ExpenseForm";
+import Chart from "../Chart/Chart";
 import expenseObj from "../Data/ExpensesData";
 import { useState } from "react";
+import ExpensesChart from "./ExpensesChart";
 function ExpenseItems() {
   const [expenses, setExpense] = useState(expenseObj);
   const onSaveExpDataHandler = (eneteredExpData) => {
     const enteredData = {
       ...eneteredExpData,
-      id: Math.random().toString(),
+      id: `e${expenses.length + 1}`,
     };
     setExpense((prevExpenses) => [enteredData, ...prevExpenses]);
   };
@@ -23,8 +25,9 @@ function ExpenseItems() {
   };
   return (
     <div>
+      <ExpensesChart dataPoints={selectedFilterExpenses} />
       {selectedFilterExpenses.length <= 0 ? (
-        <p style={{ color: "black" }}>No data Found !!!</p>
+        <p className="noDataFound">No data Found !!!</p>
       ) : (
         <div className="expensesParentDiv">
           {selectedFilterExpenses.map((expense) => (
@@ -41,9 +44,6 @@ function ExpenseItems() {
           )}
         </div>
       )}
-      <div className="hrStyle">
-        <hr />
-      </div>
       <ExpenseForm
         onSaveExpenseData={onSaveExpDataHandler}
         onYearFilterChange={onYearFilterChange}

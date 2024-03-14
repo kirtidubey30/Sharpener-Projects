@@ -1,5 +1,5 @@
 .form-Title {
-  border: 1px solid #ccc;
+  border: 28px solid #f5f5dc;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
@@ -38,8 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  margin: 85px;
+  margin: 10px;
 }
 .saveBtn {
   background-color: #ff005038;
@@ -61,12 +60,13 @@
   height: auto;
 }
 .AddExpnseBtn {
-  background-color: #00ffa838;
   width: 7rem;
   height: 2rem;
   border: none;
   cursor: pointer;
   inset: 0;
+  background-color: darkcyan;
+  color: beige;
   margin: auto;
 }
 .clsBtn {

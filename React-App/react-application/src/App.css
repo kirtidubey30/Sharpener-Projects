@@ -1,5 +1,11 @@
 .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  height: 43.5rem;
+  /* background-image: url(../public/ExpenseTrackerBg.png); */
+  background-image: url(../public/Designer.png);
 }
 
 .App-logo {
@@ -37,6 +43,48 @@
   }
 }
 .title {
-  background-color: #62defc2b;
+  backdrop-filter: drop-shadow(2px 4px 6px black);
+  color: #2f8b8b;
   padding: 1rem 1rem 1rem 1rem;
+  top: -2rem;
+  position: absolute;
+  left: 40rem;
+  top: -2rem;
+  bottom: 2rem;
+  height: 2rem;
+  font-style: italic;
+}
+.letsBeginBtn {
+  height: 4rem;
+  margin-top: -11rem;
+  margin-left: 37rem;
+  width: 5rem;
+  margin-right: 2rem;
+  font-size: large;
+  font-weight: bold;
+  background-color: #effb7e;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  animation: blink-animation 2s infinite alternate,
+    shrink-expand 2s infinite alternate;
+}
+@keyframes blink-animation {
+  0% {
+    background-color: #40f1f9;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
+@keyframes shrink-expand {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -13,6 +13,7 @@
   padding: 15px 15px 15px 15px;
   margin: 2px 2px 10px 5px;
   height: 2rem;
+  width: 15rem;
 }
 .data {
   margin-right: 0.5rem;
@@ -24,16 +25,50 @@
   cursor: pointer;
   width: 5rem;
 }
-.hrStyle {
-  margin-top: 1.5rem;
-}
 .expensesParentDiv {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  width: 19rem;
+  overflow-x: hidden;
+  right: 2px;
+  padding: 19px 1px 5px 19px;
+  justify-content: left;
+  overflow-y: auto;
+  height: 28rem;
+  background-color: beige;
+  position: absolute;
+  top: 9rem;
+  right: 52px;
+  /* flex-direction: column; */
+}
+.expensesParentDiv::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+
+.expensesParentDiv::-webkit-scrollbar-track {
+  background: beige;
+}
+
+.expensesParentDiv::-webkit-scrollbar-thumb {
+  background: #bfd7b3;
+  border-radius: 10px;
+}
+
+.expensesParentDiv::-webkit-scrollbar-thumb:hover {
+  background: #bfd7b3;
 }
 .singleElement {
   margin: auto;
   inset: 0;
   position: relative;
+  display: contents;
+}
+.noDataFound {
+  color: black;
+  backdrop-filter: contrast(0.5);
+  width: 5rem;
+  position: relative;
+  top: -22rem;
+  height: 4rem;
 }
