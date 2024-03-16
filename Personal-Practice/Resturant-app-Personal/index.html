@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resturant-App-Personal</title>
+</head>
+<body>
+  <form>
+    <label for="price">
+      Add Price
+      <input type="number" id="price"/>
+    </label>
+    <label for="dish">Add dish
+      <input type="text" id="dish"/>
+    </label>
+    <label for="chooseTable">Chooose Table
+      <select name="chooseTable" id="chooseTable">
+        <option value="Table1">Table1</option>
+        <option value="Table2">Table2</option>
+        <option value="Table3">Table3</option>
+      </select>
+    </label>
+    <button onclick="onAddToBill(event)">Add To Bill</button>
+  </form>
+  <h1  class="heading">Orders</h1>
+  <div id="Table1"> 
+    <h3>Table1</h3>
+</div>
+<div id="Table2">   <h3>Table2</h3>
+</div>
+<div id="Table3">   <h3>Table3</h3>
+</div>
+
+</body>
+<script src="index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+</html>
