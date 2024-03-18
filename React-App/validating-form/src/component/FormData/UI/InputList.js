@@ -7,7 +7,7 @@ const InputList = (props) => {
           <div>
             {props.userData.map((val) => (
               <span key={val.id}>
-                {val.uName} - {val.uAge}
+                {val.uName} - {val.uAge} - {val.collegeName}
               </span>
             ))}
           </div>

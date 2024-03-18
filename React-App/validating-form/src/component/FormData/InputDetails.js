@@ -1,14 +1,16 @@
 import Button from "./UI/Button";
 import "./InputDetails.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 const InputDetails = (props) => {
   const [usernameVal, setUsernameVal] = useState("");
   const [ageVal, setAgeVal] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const collegeName = useRef();
   const closeModal = () => {
     setIsModalOpen(false);
     setAgeVal("");
     setUsernameVal("");
+    collegeName.current.value = "";
   };
   const handleAddUser = () => {
     if (usernameVal.length > 0 && ageVal >= 0 && ageVal.length > 0) {
@@ -16,10 +18,12 @@ const InputDetails = (props) => {
         uName: usernameVal,
         uAge: ageVal,
         id: props.userData.length + 1,
+        collegeName: collegeName.current.value,
       };
       props.setUserData([...props.userData, newData]);
       setAgeVal("");
       setUsernameVal("");
+      collegeName.current.value = "";
     } else {
       setIsModalOpen(true);
     }
@@ -42,6 +46,10 @@ const InputDetails = (props) => {
               onChange={onChangeUsernameHandler}
               type="text"
             />
+          </span>
+          <span>
+            <label htmlFor="username">College Name</label>
+            <input type="text" ref={collegeName} />
           </span>
           <span>
             <label htmlFor="age">Age (Years)</label>
