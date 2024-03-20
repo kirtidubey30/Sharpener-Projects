@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import BookedSeats from "../BookedSeats/BookedSeats";
+import { useState } from "react";
 const BookingForm = (props) => {
   const handleAddClick = (event) => {
     event.preventDefault();

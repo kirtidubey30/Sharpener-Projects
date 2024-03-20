@@ -16,7 +16,7 @@ function App() {
         ...bookedSeats,
         { userName: name, seatNum: seatNo, id: id },
       ]);
-    } else if (isSeatPresent) {
+    } else if (isPresent) {
       setSeatIsPresent(true);
       window.alert("Already Booked");
     }
