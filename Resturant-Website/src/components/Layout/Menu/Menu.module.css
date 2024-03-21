@@ -1,0 +1,30 @@
+.parentItemMenu {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 5px;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.menus {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 70%;
+  margin-top: -1rem;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 2rem;
+  inset: 0;
+  box-shadow: 0px 31px 31px rgb(106 99 99);
+  background-color: #0f121d;
+  color: #905d38;
+}
+.parentItemMenu h2,
+.parentItemMenu p {
+  padding: 4px;
+  margin: -3px 2px -2px 5px;
+  background: #3f3a37;
+  color: #f5deb369;
+}
