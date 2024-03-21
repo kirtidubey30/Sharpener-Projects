@@ -1,0 +1,52 @@
+header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  position: relative;
+  padding-left: 2rem;
+  font-style: inherit;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-size: x-large;
+  background-color: rgb(114 82 57);
+  align-content: center;
+}
+header div {
+  position: relative;
+}
+section img {
+  object-fit: cover;
+  overflow: hidden;
+  width: 100%;
+  height: 41rem;
+}
+header button {
+  display: flex;
+  height: 3rem;
+  position: relative;
+  right: 2rem;
+  font-size: large;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px #b18f75;
+  border: none;
+  align-items: center;
+  background-color: #e5c997;
+  padding: 13px;
+}
+header button img {
+  position: relative;
+  height: 3rem;
+  width: 3.4rem;
+  left: 0.1rem;
+  right: 1rem;
+  padding-right: 0.5rem;
+}
+.cartItems {
+  min-width: 2rem;
+  padding: 0.1rem;
+  border-radius: 1.2rem;
+  margin: 1rem;
+  background-color: #ef1400;
+}
