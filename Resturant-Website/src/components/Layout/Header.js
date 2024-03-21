@@ -8,13 +8,25 @@ function Header() {
       <header>
         <div>React Meals</div>
         <button>
-          <img src={icon} />
+          <img src={icon} alt="ShoppingCartIcon" />
           Your Cart
           <div className={styles.cartItems}>0</div>
         </button>
       </header>
-      <section>
-        <img src={bgImage} alt="background" />
+      <section className={styles.bgImg}>
+        <div className={styles.overlay}>
+          <h3>Delicious Food , Delivered To You</h3>
+          <span>
+            Choose your favorite meal from our broad selection of available
+            meals and enjoy a delicious lunch or dinner at home.
+          </span>
+          <br></br>
+          <span>
+            All our meals are cooked with high-quality ingredients, just-in-time
+            and of course by experienced chefs!
+          </span>
+        </div>
+        <img src={bgImage} alt="ResturantWebsite" />
       </section>
     </>
   );

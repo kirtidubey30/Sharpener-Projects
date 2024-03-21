@@ -24,7 +24,7 @@ section img {
 }
 header button {
   display: flex;
-  height: 3rem;
+  height: 3.5rem;
   position: relative;
   right: 2rem;
   font-size: large;
@@ -49,4 +49,23 @@ header button img {
   border-radius: 1.2rem;
   margin: 1rem;
   background-color: #ef1400;
+}
+.bgImg {
+  position: relative;
+}
+.overlay {
+  margin: auto;
+  background: rgb(63 58 55);
+  height: 34%;
+  inset: 0;
+  color: white;
+  padding: 1rem 2rem 2rem 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 54%;
+  position: absolute;
+  top: 17rem;
+  display: flex;
+  flex-direction: column;
 }
