@@ -9,19 +9,19 @@ const Meals = [
     image: "https://dummyimage.com/400x300/ffcc00/000000&text=Delicious+Pizza",
     price: 12.99,
   },
-  {
-    id: 2,
-    title: "Spicy Ramen Bowl",
-    description:
-      "Dive into a bowl of our steaming hot spicy ramen! Made with chewy noodles, rich broth, tender slices of pork, and a fiery chili kick. It's comfort food with a kick!",
-    image: "https://dummyimage.com/400x300/ff6600/000000&text=Spicy+Ramen",
-    price: 9.49,
-  },
+  // {
+  //   id: 2,
+  //   title: "Spicy Ramen Bowl",
+  //   description:
+  //     "Dive into a bowl of our steaming hot spicy ramen! Made with chewy noodles, rich broth, tender slices of pork, and a fiery chili kick. It's comfort food with a kick!",
+  //   image: "https://dummyimage.com/400x300/ff6600/000000&text=Spicy+Ramen",
+  //   price: 9.49,
+  // },
   {
     id: 3,
     title: "Chocolate Brownie Sundae",
     description:
-      "Satisfy your sweet tooth with our indulgent chocolate brownie sundae. A warm, fudgy brownie topped with a generous scoop of vanilla ice cream, drizzled with chocolate sauce, and sprinkled with crushed nuts. Pure bliss!",
+      "Satisfy your sweet tooth with our indulgent chocolate brownie sundae. A warm, fudgy brownie topped with a generous scoop of vanilla ice cream. Pure bliss!",
     image: "https://dummyimage.com/400x300/993366/ffffff&text=Brownie+Sundae",
     price: 6.99,
   },
