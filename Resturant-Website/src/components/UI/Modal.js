@@ -17,7 +17,7 @@ const ModalOverlays = (props) => {
 };
 
 function Modal(props) {
-  const positionModal = document.getElementById("modalOverlays");
+  // const positionModal = document.getElementById("modalOverlays");
   return (
     <Fragment>
       <BackDrop />

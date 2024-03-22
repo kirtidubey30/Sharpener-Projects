@@ -2,12 +2,15 @@ import React from "react";
 import bgImage from "../../assets/Resturant-BgImage.png";
 import icon from "../../assets/ShoppingIcon.png";
 import styles from "./Header.module.css";
-function Header() {
+function Header(props) {
+  const clickCartHandler = (isFromCloseBtn) => {
+    props.onClickofViewCart(isFromCloseBtn);
+  };
   return (
     <>
       <header>
         <div>React Meals</div>
-        <button>
+        <button onClick={() => clickCartHandler(false)}>
           <img src={icon} alt="ShoppingCartIcon" />
           Your Cart
           <div className={styles.cartItems}>0</div>

@@ -7,7 +7,7 @@ function Menu() {
       <div className={styles.menus}>
         {response.map((items) => (
           <span className={styles.parentItemMenu} key={items.id}>
-            <img src={items.image} />
+            <img src={items.image} alt="cart-Menu" />
             <h2>{items.title}</h2>
             <p>{items.description}</p>
             <p>
