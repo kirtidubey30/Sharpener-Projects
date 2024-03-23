@@ -9,7 +9,6 @@ function Header(props) {
   const [numOfCartItems, setNumOfCartItems] = useState(0);
 
   useEffect(() => {
-    console.log("cartCtx from header =", cartCtx);
     setNumOfCartItems(cartCtx.items.length);
   }, [cartCtx]);
 

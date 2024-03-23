@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import response from "../../Meals/Meals.js";
 import styles from "./Menu.module.css";
 
@@ -16,10 +16,6 @@ function Menu(props) {
     setItemAmounts(updatedAmounts);
     props.handleonAddItem({ ...item, amount: updatedAmounts[item.id] });
   };
-
-  useEffect(() => {
-    console.log("Item amounts:", itemAmounts);
-  }, [itemAmounts]);
 
   return (
     <div className={styles.container}>

@@ -8,7 +8,7 @@
 
 .total {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;
@@ -43,4 +43,63 @@
 .actions .button {
   background-color: #8a2b06;
   color: white;
+}
+.addremoveBtn {
+  text-align: right;
+}
+.addremoveBtn button {
+  font: inherit;
+  max-height: 2rem;
+  min-width: 3rem;
+  font-size: larger;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #8a2b06;
+  border-radius: 25px;
+  margin-left: 1rem;
+}
+.addremoveBtn button:hover,
+.addremoveBtn button:active {
+  background-color: #5a1a01;
+  border-color: #5a1a01;
+  color: white;
+}
+.removeBtn {
+  color: #8a2b06;
+}
+.addBtn {
+  background-color: #8a2b06;
+  color: white;
+}
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 5rem;
+  max-height: 15rem;
+}
+.cartItems {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.listOfItems {
+  background: #8a2b0621;
+  height: 4rem;
+  justify-content: space-between;
+  display: flex;
+  padding: 0.2rem;
+  margin: auto;
+  inset: 0;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+  width: 30rem;
+}
+.listOfItems span input {
+  width: 2rem;
+  border: none;
+  text-align: center;
+  background: #faebd761;
+}
+.itemDetails {
+  display: flex;
+  justify-content: space-around;
 }

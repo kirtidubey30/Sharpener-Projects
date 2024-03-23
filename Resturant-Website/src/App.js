@@ -13,9 +13,7 @@ function App() {
       setViewCart(true);
     }
   };
-  //const initialItems = cartCtx.items;
   const handleonAddItem = (item) => {
-    console.log("handleAddItem called where item fromApp.js =", item);
     cartCtx.addItem(item);
   };
   return (

@@ -2,8 +2,6 @@ import React from "react";
 import cartContext from "./cart-context";
 import { useState } from "react";
 function CartContextProvider(props) {
-  console.log("inside cartContextProvider*** ");
-  // const [cartItem, setCartItem] = useState(props.initialItems || []);
   const [cartItem, setCartItem] = useState([]);
   const addItemToCartHandler = (newItem) => {
     const existingItemIndex = cartItem.findIndex(
@@ -11,21 +9,20 @@ function CartContextProvider(props) {
     );
 
     if (existingItemIndex !== -1) {
-      console.log("Item already exists in cart. Updating quantity...");
       const updatedCartItems = [...cartItem];
       updatedCartItems[existingItemIndex] = {
         ...updatedCartItems[existingItemIndex],
-        amount: updatedCartItems[existingItemIndex].amount + 1, // Increase quantity by 1
+        amount: updatedCartItems[existingItemIndex].amount + 1,
       };
-      console.log("Updated cart items after adding:", updatedCartItems);
       setCartItem(updatedCartItems);
     } else {
-      console.log("Item does not exist in cart. Adding to cart...");
       setCartItem((prevItems) => [...prevItems, { ...newItem, amount: 1 }]);
     }
   };
 
-  const removeItemFromCartHandler = (item) => {};
+  const removeItemFromCartHandler = (itemId) => {
+    setCartItem((prevItem) => prevItem.filter((item) => item.id !== itemId));
+  };
   const cartContextVal = {
     items: cartItem,
     totalItems: cartItem.length,
