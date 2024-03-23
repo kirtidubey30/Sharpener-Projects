@@ -1,6 +1,7 @@
 const Meals = [
   {
     id: 1,
+    amount: 0,
     title: "Margherita Pizza",
     description:
       "Our classic Margherita pizza features a thin crust topped with fresh tomato sauce, mozzarella cheese, basil leaves, and a drizzle of olive oil. It's a delightful blend of simplicity and flavor. Perfect for pizza lovers!",
@@ -9,6 +10,7 @@ const Meals = [
   },
   // {
   //   id: 2,
+  //amount:0,
   //   title: "Spicy Ramen Bowl",
   //   description:
   //     "Dive into a bowl of our steaming hot spicy ramen! Made with chewy noodles, rich broth, tender slices of pork, and a fiery chili kick. It's comfort food with a kick!",
@@ -17,6 +19,7 @@ const Meals = [
   // },
   {
     id: 3,
+    amount: 0,
     title: "Chocolate Brownie Sundae",
     description:
       "Satisfy your sweet tooth with our indulgent chocolate brownie sundae. A warm, fudgy brownie topped with a generous scoop of vanilla ice cream. Pure bliss!",
@@ -25,6 +28,7 @@ const Meals = [
   },
   {
     id: 4,
+    amount: 0,
     title: "Classic Caesar Salad",
     description:
       "Our crisp Romaine lettuce is tossed in creamy Caesar dressing, topped with crunchy croutons, shaved Parmesan cheese, and a sprinkle of black pepper. A timeless favorite!",
@@ -33,6 +37,7 @@ const Meals = [
   },
   {
     id: 5,
+    amount: 0,
     title: "Gourmet Cheeseburger",
     description:
       "Sink your teeth into our juicy beef patty topped with melted cheddar cheese, caramelized onions, crispy bacon, fresh lettuce, and tangy barbecue sauce. Served with golden fries.",
@@ -41,6 +46,7 @@ const Meals = [
   },
   {
     id: 6,
+    amount: 0,
     title: "Mango Tango Smoothie",
     description:
       "A tropical delight! Our Mango Tango Smoothie blends ripe mangoes, Greek yogurt, and a splash of orange juice. Refreshing and packed with vitamins.",
@@ -49,6 +55,7 @@ const Meals = [
   },
   {
     id: 7,
+    amount: 0,
     title: "Caprese Bruschetta",
     description:
       "Slices of crusty baguette are topped with fresh tomatoes, mozzarella cheese, basil leaves, and a drizzle of balsamic glaze. A delightful appetizer!",
@@ -57,6 +64,7 @@ const Meals = [
   },
   {
     id: 8,
+    amount: 0,
     title: "Thai Green Curry",
     description:
       "A fragrant and spicy coconut-based curry with tender chicken, bell peppers, bamboo shoots, and Thai basil. Served with jasmine rice.",
@@ -65,6 +73,7 @@ const Meals = [
   },
   {
     id: 9,
+    amount: 0,
     title: "Berry Bliss Pancakes",
     description:
       "Fluffy buttermilk pancakes studded with fresh blueberries and raspberries. Topped with a dollop of whipped cream and a drizzle of maple syrup. Breakfast heaven!",
@@ -73,6 +82,7 @@ const Meals = [
   },
   {
     id: 10,
+    amount: 0,
     title: "Avocado Toast",
     description:
       "Start your day right with our creamy avocado toast. Slices of whole-grain bread topped with smashed avocado, cherry tomatoes, red pepper flakes, and a sprinkle of sea salt. Simple and nutritious!",

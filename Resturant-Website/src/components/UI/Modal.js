@@ -1,11 +1,8 @@
 import React, { Fragment } from "react";
-
+import { createPortal } from "react-dom";
 import classes from "./Modal.module.css";
 const BackDrop = (props) => {
-  return (
-    <div className={classes.backdrop}></div>
-    // <div className="backDrop"></div>
-  );
+  return <div className={classes.backdrop}></div>;
 };
 
 const ModalOverlays = (props) => {
@@ -17,18 +14,18 @@ const ModalOverlays = (props) => {
 };
 
 function Modal(props) {
-  // const positionModal = document.getElementById("modalOverlays");
+  const positionModal = document.getElementById("modalOverlays");
   return (
     <Fragment>
-      <BackDrop />
-      <ModalOverlays>{props.children}</ModalOverlays>
+      {/* <BackDrop />
+      <ModalOverlays>{props.children}</ModalOverlays> */}
       {/* React.createPortal takes two arguments first which element to render and
       second where to render */}
-      {/* {React.createPortal(<BackDrop />, positionModal)}
-      {React.createPortal(
+      {createPortal(<BackDrop />, positionModal)}
+      {createPortal(
         <ModalOverlays> {props.children} </ModalOverlays>,
         positionModal
-      )} */}
+      )}
     </Fragment>
   );
 }

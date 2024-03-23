@@ -1,20 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
+import CartContext from "../../store/cart-context";
 function Cart(props) {
-  // const cartItems = (
-  //   <ul className="">
-  //     {[
-  //       {
-  //         id: 10,
-  //         name: "Avocado Toast",
-  //         price: 50,
-  //       },
-  //     ].map((item) => (
-  //       <li key={item.id}>{item.name}</li>
-  //     ))}
-  //   </ul>
-  // );
+  const { items, totalItems, addItem, removeItem } = useContext(CartContext);
   const clickCartHandler = (isFromCloseBtn) => {
     props.onClickofViewCart(isFromCloseBtn);
   };
@@ -23,7 +12,7 @@ function Cart(props) {
       <div>cartItems</div>
       <div className={classes.total}>
         <span>Total amount</span>
-        <span>50</span>
+        <span>{totalItems}</span>
       </div>
       <div className={classes.actions}>
         <button

@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import bgImage from "../../assets/Resturant-BgImage.png";
 import icon from "../../assets/ShoppingIcon.png";
 import styles from "./Header.module.css";
+import CartContext from "../../store/cart-context";
+
 function Header(props) {
+  const cartCtx = useContext(CartContext);
+  const [numOfCartItems, setNumOfCartItems] = useState(0);
+
+  useEffect(() => {
+    console.log("cartCtx from header =", cartCtx);
+    setNumOfCartItems(cartCtx.items.length);
+  }, [cartCtx]);
+
   const clickCartHandler = (isFromCloseBtn) => {
     props.onClickofViewCart(isFromCloseBtn);
   };
+
   return (
     <>
       <header>
@@ -13,7 +24,7 @@ function Header(props) {
         <button onClick={() => clickCartHandler(false)}>
           <img src={icon} alt="ShoppingCartIcon" />
           Your Cart
-          <div className={styles.cartItems}>0</div>
+          <div className={styles.cartItems}>{numOfCartItems}</div>
         </button>
       </header>
       <section className={styles.bgImg}>
@@ -23,13 +34,13 @@ function Header(props) {
             Choose your favorite meal from our broad selection of available
             meals and enjoy a delicious lunch or dinner at home.
           </span>
-          <br></br>
+          <br />
           <span>
             All our meals are cooked with high-quality ingredients, just-in-time
             and of course by experienced chefs!
           </span>
         </div>
-        <img src={bgImage} alt="ResturantWebsite" />
+        <img src={bgImage} alt="RestaurantWebsite" />
       </section>
     </>
   );
