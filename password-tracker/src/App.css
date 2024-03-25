@@ -41,5 +41,19 @@
   flex-direction: column;
   width: fit-content;
   margin: auto;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
+}
+.addPassModal span button {
+  margin: 0.2rem;
+  width: 3rem;
+}
+.addPassModal span {
+  margin: auto;
+  padding: 0.5rem;
+}
+.pwdList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }

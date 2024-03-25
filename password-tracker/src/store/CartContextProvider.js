@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cartContext from "./cart-context.js";
 
 function CartContextProvider(props) {
   const [cartItem, setCartItem] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  useEffect(() => {
+    setFilteredItems(cartItem);
+  }, [cartItem]);
 
   const handleAddItem = (newItem) => {
     setCartItem((prevItems) => [...prevItems, newItem]);
@@ -12,11 +17,23 @@ function CartContextProvider(props) {
     setCartItem((prevItem) => prevItem.filter((item) => item.id !== id));
   };
 
+  const handleSearchItem = (searchQuery) => {
+    if (searchQuery.trim() === "") {
+      setFilteredItems(cartItem);
+    } else {
+      const filtered = cartItem.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredItems(filtered);
+    }
+  };
+
   const contextVal = {
-    items: cartItem,
-    totalItems: cartItem.length,
+    items: filteredItems,
+    totalItems: filteredItems.length,
     addItem: handleAddItem,
     removeItem: handleRemoveItem,
+    searchItem: handleSearchItem,
   };
 
   return (
