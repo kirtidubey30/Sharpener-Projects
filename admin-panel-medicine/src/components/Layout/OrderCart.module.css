@@ -1,0 +1,105 @@
+.cart-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.total {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.actions {
+  text-align: right;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #6c91cc;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  margin-left: 1rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: white;
+  border-color: blue;
+  color: blue;
+}
+
+.actions .button--alt {
+  color: #6c91cc;
+}
+
+.actions .button {
+  background-color: #6c91cc;
+  color: blue;
+}
+.addremoveBtn {
+  text-align: right;
+}
+.addremoveBtn button {
+  font: inherit;
+  max-height: 2rem;
+  min-width: 3rem;
+  font-size: larger;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #6c91cc;
+  border-radius: 25px;
+  margin-left: 1rem;
+}
+.addremoveBtn button:hover,
+.addremoveBtn button:active {
+  background-color: white;
+  border-color: white;
+  color: blue;
+}
+.removeBtn {
+  color: #6c91cc;
+}
+.addBtn {
+  background-color: #6c91cc;
+  color: blue;
+}
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 5rem;
+  max-height: 15rem;
+}
+.cartItems {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.listOfItems {
+  background: #a0bfea4f;
+  height: 4rem;
+  justify-content: space-between;
+  display: flex;
+  padding: 0.2rem;
+  margin: auto;
+  inset: 0;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+  width: 30rem;
+}
+.listOfItems span input {
+  width: 2rem;
+  border: none;
+  text-align: center;
+  background: #faebd761;
+}
+.itemDetails {
+  display: flex;
+  justify-content: space-around;
+}

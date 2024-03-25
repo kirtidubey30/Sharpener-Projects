@@ -1,0 +1,26 @@
+.cartsDiv {
+  width: 65rem;
+  text-align: left;
+  display: flex;
+  margin-left: 2rem;
+  border: 2px solid blue;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.cartsDiv span {
+  padding: 0.2rem;
+  background: aliceblue;
+  margin: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cartsDiv span span input {
+  width: 1rem;
+  text-align: center;
+  margin: 0.2rem;
+  padding: 0.1rem;
+  background: #bfc9c98f;
+}
+.cartsDiv span button {
+  width: 6rem;
+}
