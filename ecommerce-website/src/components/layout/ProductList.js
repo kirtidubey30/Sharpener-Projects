@@ -1,5 +1,5 @@
 import React from "react";
-import productsArr from "../productsArr";
+import productsArr from "../Data/productsArr";
 export const ProductList = () => {
   return (
     <div style={{ display: "flex" }}>
