@@ -4,7 +4,7 @@ import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
 import cartContext from "../../store/cart-context";
 function Cart(props) {
-  const { items, totalItems, addItem, removeItem } = useContext(CartContext);
+  const { items } = useContext(CartContext);
   const cartCtx = useContext(cartContext);
   const clickCartHandler = (isFromCloseBtn) => {
     props.onClickofViewCart(isFromCloseBtn);
@@ -12,7 +12,6 @@ function Cart(props) {
   const calCulateTotalPrice = (items) => {
     if (items.length) {
       return items.reduce((total, item) => {
-        console.log("totalVal =", total + item.amount * item.price);
         return total + item.amount * item.price;
       }, 0);
     } else {

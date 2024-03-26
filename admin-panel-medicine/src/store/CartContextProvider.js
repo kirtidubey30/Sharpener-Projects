@@ -15,13 +15,39 @@ function CartContextProvider(props) {
       removeItemFromCartHandler(id);
     },
   };
+  // const addItemToCartHandler = (addItem) => {
+  //   const existingItemIndex = cartItem.findIndex(
+  //     (addItem) => addItem.id === existingItemIndex.id
+  //   );
+
+  //   if (existingItemIndex !== -1) {
+  //     //exists
+  //     const updatedVal = [...cartItem];
+  //     updatedVal[existingItemIndex] = {
+  //       ...updatedVal[existingItemIndex],
+  //       amount: updatedVal[existingItemIndex].amount + 1,
+  //       quantityAvailable: updatedVal[existingItemIndex].quantityAvailable - 1,
+  //     };
+  //     setCartItem(updatedVal);
+  //   } else {
+  //     //add the new value
+  //     setCartItem((prevItem) => [
+  //       ...prevItem,
+  //       {
+  //         ...addItem,
+  //         amount: 1,
+  //         quantityAvailable: addItem.quantityAvailable,
+  //       },
+  //     ]);
+  //   }
+  // };
   const addItemToCartHandler = (addItem) => {
     const existingItemIndex = cartItem.findIndex(
-      (addItem) => addItem.id === existingItemIndex.id
+      (item) => item.id === addItem.id
     );
 
     if (existingItemIndex !== -1) {
-      //exists
+      // Item already exists in the cart
       const updatedVal = [...cartItem];
       updatedVal[existingItemIndex] = {
         ...updatedVal[existingItemIndex],
@@ -30,7 +56,7 @@ function CartContextProvider(props) {
       };
       setCartItem(updatedVal);
     } else {
-      //add the new value
+      // Add the new item to the cart
       setCartItem((prevItem) => [
         ...prevItem,
         {

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -45,6 +45,9 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+  const clgNameInputRef = useRef();
   useEffect(() => {
     setFormIsValid(
       clgNameState?.value?.trim()?.length > 0 &&
@@ -81,13 +84,22 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value, clgNameState.value);
+    if (formIsValid) {
+      props.onLogin(emailState.value, passwordState.value, clgNameState.value);
+    } else if (emailState.isValid) {
+      emailInputRef.current.activate();
+    } else if (passwordState.isValid) {
+      passwordInputRef.current.activate();
+    } else if (clgNameState.isValid) {
+      clgNameInputRef.current.activate();
+    }
   };
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <Input
+          ref={emailInputRef}
           id="email"
           label="E-MAIL"
           type="email"
@@ -97,6 +109,7 @@ const Login = (props) => {
           onChange={emailChangeHandler}
         />
         <Input
+          ref={passwordInputRef}
           id="password"
           label="Password"
           type="password"
@@ -106,6 +119,7 @@ const Login = (props) => {
           onChange={passwordChangeHandler}
         />
         <Input
+          ref={clgNameInputRef}
           id="clgName"
           label="College Name"
           type="text"

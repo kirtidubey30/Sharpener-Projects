@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { createPortal } from "react-dom";
 import classes from "./Modal.module.css";
-const BackDrop = (props) => {
+const BackDrop = () => {
   return <div className={classes.backdrop}></div>;
 };
 

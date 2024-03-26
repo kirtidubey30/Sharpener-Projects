@@ -8,7 +8,7 @@ function App() {
   const [bookedSeats, setBookedSeats] = useState([]);
   const [isSeatPresent, setSeatIsPresent] = useState();
   const addData = (name, seatNo) => {
-    const isPresent = bookedSeats.some((seat) => seat.seatNum == seatNo);
+    const isPresent = bookedSeats.some((seat) => seat.seatNum === seatNo);
     if (!isPresent) {
       setSeatIsPresent(false);
       const id = `b${bookedSeats.length + 1}`;
@@ -26,7 +26,9 @@ function App() {
   };
   const findSeats = (seatNo) => {
     if (seatNo.length > 0) {
-      const foundSeats = bookedSeats.filter((seats) => seats.seatNum == seatNo);
+      const foundSeats = bookedSeats.filter(
+        (seats) => seats.seatNum === seatNo
+      );
       if (foundSeats) {
         setBookedSeats(foundSeats);
       } else {
