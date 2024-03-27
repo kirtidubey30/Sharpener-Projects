@@ -1,0 +1,16 @@
+.moviesDetails {
+  width: 30rem;
+  margin: auto;
+  background: #7777772e;
+  padding: 0.8rem;
+}
+.moviesDetails span {
+  margin: 1rem;
+  display: inline-grid;
+  text-decoration: none;
+  padding: 1rem;
+  border-bottom: 1px solid brown;
+}
+.btn {
+  margin: 2rem;
+}

@@ -6,10 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import CartContextProvider from "./components/store/CartContextProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Header from "./components/layout/Header";
 import AboutComponents from "./components/UI/About/AboutComponents";
 import MusicComponent from "./components/UI/MusicComponent";
 import HomeComponents from "./components/UI/Home/HomeComponents";
+import Movies from "./components/Movies/Movies";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Header />,
+        element: <HomeComponents />,
       },
       {
         path: "/home",
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/store",
         element: <MusicComponent />,
+      },
+      {
+        path: "/movies",
+        element: <Movies />,
       },
     ],
   },
