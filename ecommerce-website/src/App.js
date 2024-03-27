@@ -3,6 +3,7 @@ import "./App.css";
 import CartComponent from "./components/UI/CartComponent";
 import Header from "./components/layout/Header";
 import { Outlet } from "react-router-dom";
+import Footer from "./components/layout/Footer";
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -13,8 +14,8 @@ function App() {
     <div className="App">
       <Header setCartOpen={toggleCartOpen} />
       <Outlet />
-      {/* <MusicComponent /> */}
       {cartOpen && <CartComponent setCartOpen={toggleCartOpen} />}
+      <Footer />
     </div>
   );
 }

@@ -1,18 +1,31 @@
 import React from "react";
 import classes from "./Header.module.css";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation hook
+
 function Header(props) {
   const { setCartOpen } = props;
+  const location = useLocation(); // Get the current location object
+  const isHome = location.pathname === "/home";
   return (
     <header>
       <ul>
         <li>
-          <a href="./index.html">HOME</a>
+          <Link
+            to="/home"
+            className={isHome ? "headersection active" : "headersection"}
+          >
+            HOME
+          </Link>
         </li>
         <li>
-          <a href="/store">STORE</a>
+          <Link to="/store" className="headersection">
+            STORE
+          </Link>
         </li>
         <li>
-          <a href="/about">ABOUT</a>
+          <Link to="/about" className="headersection">
+            ABOUT
+          </Link>
         </li>
         <a
           href="#cart"
@@ -23,6 +36,14 @@ function Header(props) {
         </a>
       </ul>
       <h1>The Generics</h1>
+      {isHome && (
+        <React.Fragment>
+          <button className={classes["latest-album"]}>
+            Get our Latest Album
+          </button>
+          <button className={classes["play-btn"]}>►</button>
+        </React.Fragment>
+      )}
     </header>
   );
 }

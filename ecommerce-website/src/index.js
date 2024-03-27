@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/layout/Header";
 import AboutComponents from "./components/UI/About/AboutComponents";
 import MusicComponent from "./components/UI/MusicComponent";
+import HomeComponents from "./components/UI/Home/HomeComponents";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Header />,
+      },
+      {
+        path: "/home",
+        element: <HomeComponents />,
       },
       {
         path: "/about",
