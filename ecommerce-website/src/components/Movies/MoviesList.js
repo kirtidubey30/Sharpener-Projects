@@ -6,10 +6,13 @@ function MoviesList() {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState("");
   const [cancelRetryFlag, setCancelRetryFlag] = useState(false);
+  const [newTitle, setTitle] = useState("");
+  const [newDesc, setDesc] = useState("");
+  const [dir, setDir] = useState("");
 
   async function fetchData() {
     setIsloading(true);
-    const response = await fetch("https://swapi.dev/api/film");
+    const response = await fetch("https://swapi.dev/api/films");
     if (!response.ok) {
       throw new Error("Something went wrong");
     }
@@ -47,22 +50,66 @@ function MoviesList() {
   function cancelRetrying() {
     setCancelRetryFlag(true);
   }
-
+  const onAddMovie = () => {
+    const newItem = {
+      episode_id: moviesList.length + 1,
+      title: newTitle,
+      opening_crawl: newDesc,
+      director: dir,
+    };
+    console.log("Data added =", newItem);
+    setMoviesList([...moviesList, newItem]);
+    setDesc("");
+    setDir("");
+    setTitle("");
+  };
   return (
     <React.Fragment>
-      <button className={classes.btn}>MoviesList</button>
+      <button className={classes.btn}>Fetch Movies</button>
       <button onClick={cancelRetrying}>Cancel Retry</button>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {error.length === 0 && isLoading && <p>Loading...</p>}
-      {moviesList.length > 0 && (
-        <div className={classes.moviesDetails}>
-          {moviesList.map((movies) => (
-            <span key={movies.id}>
-              {movies.title} - {movies.desc} - <b>{movies.director}</b>
+      <div className={classes.parentDivOflists}>
+        <div className={classes.form}>
+          <form>
+            <span>
+              <label>Title</label>
+              <input
+                type="text"
+                value={newTitle}
+                onChange={(e) => setTitle(e.target.value)}
+              ></input>
             </span>
-          ))}
+            <span>
+              <label>Opening Text</label>
+              <input
+                type="text"
+                value={newDesc}
+                onChange={(e) => setDesc(e.target.value)}
+              ></input>
+            </span>
+            <span>
+              <label>Description</label>
+              <input
+                type="text"
+                value={dir}
+                onChange={(e) => setDir(e.target.value)}
+              ></input>
+            </span>
+          </form>
+          <button onClick={onAddMovie}>Add Movie</button>
         </div>
-      )}
+        {moviesList.length > 0 && (
+          <div className={classes.moviesDetails}>
+            <div className={classes.listHeading}>LISTS : </div>
+            {moviesList.map((movies) => (
+              <span key={movies.id}>
+                {movies.title} - {movies.desc} - <b>{movies.director}</b>
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
     </React.Fragment>
   );
 }

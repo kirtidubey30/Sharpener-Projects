@@ -3,6 +3,12 @@
   margin: auto;
   background: #7777772e;
   padding: 0.8rem;
+  position: relative;
+  right: 1rem;
+  top: -4rem;
+  height: 28rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .moviesDetails span {
   margin: 1rem;
@@ -13,4 +19,28 @@
 }
 .btn {
   margin: 2rem;
+}
+.listHeading {
+  position: fixed;
+  justify-content: center;
+  height: 2rem;
+  display: flex;
+  background: #f0ffff63;
+  align-items: center;
+  width: 29%;
+}
+.parentDivOflists {
+  display: flex;
+}
+/* .form {
+  margin: 2rem;
+} */
+form {
+  margin: 1rem;
+}
+form span {
+  margin: 1.5rem;
+}
+form span label {
+  margin: 0.5rem;
 }
