@@ -9,10 +9,10 @@ function Header(props) {
           <a href="./index.html">HOME</a>
         </li>
         <li>
-          <a href="#">STORE</a>
+          <a href="/store">STORE</a>
         </li>
         <li>
-          <a href="./about.html">ABOUT</a>
+          <a href="/about">ABOUT</a>
         </li>
         <a
           href="#cart"
