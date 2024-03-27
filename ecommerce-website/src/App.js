@@ -1,12 +1,21 @@
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
-import ItemAddedToCart from "./components/UI/ItemAddedToCart";
-import { ProductList } from "./components/layout/ProductList";
+import CartComponent from "./components/UI/CartComponent";
+import MusicComponent from "./components/UI/MusicComponent";
+import Header from "./components/layout/Header";
+import cartContext from "./components/store/cart-context";
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false);
+  const toggleCartOpen = (value) => {
+    setCartOpen(value);
+  };
+  const ectx = useContext(cartContext);
   return (
     <div className="App">
-      <ProductList />
-      <ItemAddedToCart />
+      <Header setCartOpen={toggleCartOpen} />
+      <MusicComponent />
+      {cartOpen && <CartComponent setCartOpen={toggleCartOpen} />}
     </div>
   );
 }
