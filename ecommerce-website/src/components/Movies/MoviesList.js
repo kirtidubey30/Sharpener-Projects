@@ -50,6 +50,9 @@ function MoviesList() {
   function cancelRetrying() {
     setCancelRetryFlag(true);
   }
+  const handleDeleteItem = (itemId) => {
+    setMoviesList(moviesList.filter((movie) => movie.id !== itemId));
+  };
   const onAddMovie = () => {
     const newItem = {
       episode_id: moviesList.length + 1,
@@ -104,7 +107,13 @@ function MoviesList() {
             <div className={classes.listHeading}>LISTS : </div>
             {moviesList.map((movies) => (
               <span key={movies.id}>
-                {movies.title} - {movies.desc} - <b>{movies.director}</b>
+                {movies.title} - {movies.desc} -
+                <div className={classes.removeBtnDiv}>
+                  <b>{movies.director}</b>
+                  <button onClick={() => handleDeleteItem(movies.id)}>
+                    Remove
+                  </button>
+                </div>
               </span>
             ))}
           </div>
