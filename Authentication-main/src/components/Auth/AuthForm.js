@@ -14,6 +14,32 @@ const AuthForm = () => {
     event.preventDefault();
     if (isLogin) {
       //extsting user
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBOurc_9yCd6LlQnTsLhkhdKpI8HcOV_Bk",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail.current.value,
+            password: enteredPass.current.value,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((res) => {
+        if (res.ok) {
+          //success
+          res.json().then((data) => {
+            console.log("User Logged in Successfully with id :", data?.localId);
+          });
+        } else {
+          res.json().then((data) => {
+            console.log("Error =", data.error.message);
+            window.alert(data.error.message);
+          });
+        }
+      });
     } else {
       //call the api to create new user
       setMsg("Sending Request...");
@@ -26,7 +52,9 @@ const AuthForm = () => {
             password: enteredPass.current.value,
             returnSecureToken: true,
           }),
-          "Content-Type": "application/json",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       ).then((res) => {
         if (res.ok) {
