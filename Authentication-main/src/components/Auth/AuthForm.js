@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-
+import { useAuth } from "../../store/AuthContext";
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const authCtx = useAuth();
   const enteredEmail = useRef();
   const enteredPass = useRef();
   const switchAuthModeHandler = () => {
@@ -31,7 +32,10 @@ const AuthForm = () => {
         if (res.ok) {
           //success
           res.json().then((data) => {
+            // authCtx.setToken(data.idToken);
+            authCtx.login(data.idToken);
             console.log("User Logged in Successfully with id :", data?.localId);
+            localStorage.setItem({ token: data.idToken });
           });
         } else {
           res.json().then((data) => {
