@@ -19,15 +19,14 @@ function CartContextProvider(props) {
   };
 
   const handlerRemoveItem = (id) => {
-
     const updatedItems = cartItem.map((item) => {
       if (item.id === id) {
         return { ...item, quantity: item.quantity - 1 };
       } else {
-        return item; // Return the unchanged item if the id doesn't match
+        return item;
       }
     });
-    
+
     setCartItem(updatedItems);
   };
 

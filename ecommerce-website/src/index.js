@@ -11,6 +11,7 @@ import MusicComponent from "./components/UI/MusicComponent";
 import HomeComponents from "./components/UI/Home/HomeComponents";
 import Movies from "./components/Movies/Movies";
 import ContactUsComponent from "./components/UI/ContactUs/ContactUsComponent";
+import ProductDetail from "./components/UI/Pages/ProductDetail";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/contactUs",
         element: <ContactUsComponent />,
+      },
+      {
+        path: "/productDetails/:itemsString",
+        element: <ProductDetail />,
       },
     ],
   },

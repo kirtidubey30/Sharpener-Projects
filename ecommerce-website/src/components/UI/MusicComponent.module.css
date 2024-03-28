@@ -29,6 +29,7 @@ section h2 {
   height: 250px;
   width: 250px;
   overflow: hidden;
+  cursor: pointer;
 }
 .prod-images {
   transform-origin: center center;

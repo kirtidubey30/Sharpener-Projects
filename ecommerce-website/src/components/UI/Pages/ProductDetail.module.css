@@ -1,0 +1,32 @@
+.image-container {
+  position: relative;
+  height: 25rem;
+  width: 25rem;
+  margin: 6rem;
+  overflow: hidden;
+}
+.prod-images {
+  transform-origin: center center;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  transition: transform 0.5s ease;
+  filter: brightness(100%);
+}
+.image-container:hover .prod-images {
+  transform: scale(1.2);
+}
+.productDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+}
+.imgDesc {
+  position: relative;
+  height: 25rem;
+  width: 25rem;
+  margin: 6rem;
+}
