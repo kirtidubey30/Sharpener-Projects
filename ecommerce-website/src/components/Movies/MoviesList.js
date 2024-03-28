@@ -12,7 +12,10 @@ function MoviesList() {
 
   async function fetchData() {
     setIsloading(true);
-    const response = await fetch("https://swapi.dev/api/films");
+    // const response = await fetch("https://swapi.dev/api/films");
+    let response = await fetch(
+      "https://e-commercehttp-default-rtdb.firebaseio.com/movies.json"
+    );
     if (!response.ok) {
       throw new Error("Something went wrong");
     }
@@ -22,10 +25,10 @@ function MoviesList() {
     try {
       setError("");
       const data = await fetchData();
-      const moviesData = data.results.map((movies) => ({
+      const moviesData = Object.entries(data).map(([movieId, movies]) => ({
         title: movies.title,
-        id: movies.episode_id,
-        desc: movies.opening_crawl,
+        id: movieId,
+        desc: movies.desc,
         director: movies.director,
       }));
       setMoviesList(moviesData);
@@ -50,28 +53,61 @@ function MoviesList() {
   function cancelRetrying() {
     setCancelRetryFlag(true);
   }
-  const handleDeleteItem = (itemId) => {
-    setMoviesList(moviesList.filter((movie) => movie.id !== itemId));
-  };
-  const onAddMovie = () => {
+  async function handleDeleteItem(itemId) {
+    try {
+      const response = await fetch(
+        `https://e-commercehttp-default-rtdb.firebaseio.com/movies/${itemId}.json`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the item");
+      } else {
+        console.log("data deleted succesfully");
+      }
+      const updatedMoviesList = moviesList.filter(
+        (movie) => movie.id !== itemId
+      );
+      setMoviesList(updatedMoviesList);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  }
+
+  async function onAddMovie() {
     const newItem = {
-      episode_id: moviesList.length + 1,
+      id: moviesList?.length + 1,
       title: newTitle,
-      opening_crawl: newDesc,
+      desc: newDesc,
       director: dir,
     };
-    console.log("Data added =", newItem);
+    const response = await fetch(
+      "https://e-commercehttp-default-rtdb.firebaseio.com/movies.json",
+      {
+        method: "POST",
+        body: JSON.stringify(newItem),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
     setMoviesList([...moviesList, newItem]);
     setDesc("");
     setDir("");
     setTitle("");
-  };
+  }
   return (
     <React.Fragment>
       <button className={classes.btn}>Fetch Movies</button>
       <button onClick={cancelRetrying}>Cancel Retry</button>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {error.length === 0 && isLoading && <p>Loading...</p>}
+      {error?.length === 0 && isLoading && <p>Loading...</p>}
       <div className={classes.parentDivOflists}>
         <div className={classes.form}>
           <form>
@@ -102,10 +138,12 @@ function MoviesList() {
           </form>
           <button onClick={onAddMovie}>Add Movie</button>
         </div>
-        {moviesList.length > 0 && (
-          <div className={classes.moviesDetails}>
-            <div className={classes.listHeading}>LISTS : </div>
-            {moviesList.map((movies) => (
+        <div className={classes.moviesDetails}>
+          <div className={classes.listHeading}>LISTS : </div>
+          {moviesList?.length == 0 ? (
+            <div className={classes.nodata}>No data found</div>
+          ) : (
+            moviesList.map((movies) => (
               <span key={movies.id}>
                 {movies.title} - {movies.desc} -
                 <div className={classes.removeBtnDiv}>
@@ -115,9 +153,9 @@ function MoviesList() {
                   </button>
                 </div>
               </span>
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
       </div>
     </React.Fragment>
   );

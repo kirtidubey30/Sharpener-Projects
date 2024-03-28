@@ -27,6 +27,11 @@ function Header(props) {
             ABOUT
           </Link>
         </li>
+        <li>
+          <Link to="/contactUs" className="headersection">
+            CONTACT US
+          </Link>
+        </li>
         <a
           href="#cart"
           className={classes["cart-holder"]}

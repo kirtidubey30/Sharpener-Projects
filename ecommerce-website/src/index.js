@@ -10,6 +10,7 @@ import AboutComponents from "./components/UI/About/AboutComponents";
 import MusicComponent from "./components/UI/MusicComponent";
 import HomeComponents from "./components/UI/Home/HomeComponents";
 import Movies from "./components/Movies/Movies";
+import ContactUsComponent from "./components/UI/ContactUs/ContactUsComponent";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/movies",
         element: <Movies />,
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUsComponent />,
       },
     ],
   },

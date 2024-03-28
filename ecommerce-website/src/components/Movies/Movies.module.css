@@ -21,20 +21,25 @@
   margin: 2rem;
 }
 .listHeading {
-  position: fixed;
+  position: absolute;
   justify-content: center;
   height: 2rem;
   display: flex;
   background: #f0ffff63;
   align-items: center;
+  left: 10rem;
   width: 29%;
 }
 .parentDivOflists {
   display: flex;
 }
-/* .form {
-  margin: 2rem;
-} */
+.nodata {
+  display: flex;
+  margin: auto;
+  position: relative;
+  top: 8rem;
+  justify-content: center;
+}
 form {
   margin: 1rem;
 }
