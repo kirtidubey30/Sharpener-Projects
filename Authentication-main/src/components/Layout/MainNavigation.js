@@ -6,11 +6,6 @@
 
 // const MainNavigation = () => {
 //   const authCtx = AuthContext();
-//   useEffect(() => {
-//     console.log(
-//       `authCtx.isLoggedIn from MainNavigation is ${authCtx.isLoggedIn}`
-//     );
-//   });
 //   return (
 //     <header className={classes.header}>
 //       <Link to="/">
@@ -63,14 +58,12 @@ import classes from "./MainNavigation.module.css";
 import { useContext, useEffect } from "react";
 import React from "react";
 
-const MainNavigation = (props) => {
+const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   useEffect(() => {
-    console.log(
-      `authCtx.isLoggedIn from MainNavigation is ${authCtx.isLoggedIn}`
-    );
-  }, [authCtx.isLoggedIn]);
+    console.log(`authCtx.isLoggedIn from MainNavigation is ${isLoggedIn}`);
+  }, [isLoggedIn]);
 
   return (
     <header className={classes.header}>
@@ -97,16 +90,18 @@ const MainNavigation = (props) => {
           )}
         </ul> */}
         <ul>
-          <li>
-            <Link to="/auth">Login</Link>
-          </li>
+          {!isLoggedIn && (
+            <li>
+              <Link to="/auth">Login</Link>
+            </li>
+          )}
 
           <li>
             <Link to="/profile">Profile</Link>
           </li>
 
           <li>
-            <button>Logout</button>
+            <button onClick={() => authCtx.logout()}>Logout</button>
           </li>
         </ul>
       </nav>

@@ -1,12 +1,15 @@
 import { useState, useRef, useContext } from "react";
 import AuthContext from "../../store/AuthContext";
 import classes from "./AuthForm.module.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   const enteredEmail = useRef();
   const enteredPass = useRef();
+  const history = useHistory;
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -33,6 +36,7 @@ const AuthForm = () => {
           //success
           res.json().then((data) => {
             // authCtx.setToken(data.idToken);
+            history.replace("/");
             authCtx.login(data.idToken);
             console.log("User Logged in Successfully with id :", data?.localId);
             // localStorage.setItem({ token: data.idToken });
@@ -76,6 +80,7 @@ const AuthForm = () => {
     }
   };
   return (
+    // !isLoggedIn && (
     <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
@@ -110,6 +115,10 @@ const AuthForm = () => {
       </form>
     </section>
   );
+  // );
+  // : (
+  //   <UserProfile />
+  // );
 };
 
 export default AuthForm;

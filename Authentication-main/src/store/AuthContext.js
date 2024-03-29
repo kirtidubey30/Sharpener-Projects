@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const AuthContext = createContext({
   token: "",
@@ -8,6 +9,7 @@ const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
+  const history = useHistory();
   const [token, setToken] = useState("");
 
   const userIsLoggedIn = !!token;
@@ -18,7 +20,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutHandler = () => {
+    console.log("inside logOut Hndler ");
     setToken(null);
+    history.replace("/");
     localStorage.removeItem("token");
   };
   const contextVal = {
