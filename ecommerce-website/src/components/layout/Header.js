@@ -32,6 +32,11 @@ function Header(props) {
             CONTACT US
           </Link>
         </li>
+        <li>
+          <Link to="/login" className="headersection">
+            LOGIN
+          </Link>
+        </li>
         <a
           href="#cart"
           className={classes["cart-holder"]}

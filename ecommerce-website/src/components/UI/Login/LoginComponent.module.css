@@ -1,0 +1,24 @@
+.formContainer {
+  width: 50%;
+  margin: auto;
+}
+.formContainer form {
+  display: inline-flex;
+  flex-direction: column;
+  border: 29px solid #d1e2f1;
+  padding: 2rem;
+  background: aliceblue;
+}
+.formContainer button {
+  width: 6rem;
+  margin: auto;
+  background-color: #d1e2f1;
+  border: none;
+}
+.formContainer button:hover {
+  width: 6rem;
+  margin: auto;
+  background-color: #7e9bb4;
+  color: whitesmoke;
+  border: none;
+}

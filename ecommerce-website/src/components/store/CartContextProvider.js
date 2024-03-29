@@ -3,6 +3,7 @@ import cartContext from "./cart-context.js";
 import cartElements from "../Data/cartElements.js";
 function CartContextProvider(props) {
   const [cartItem, setCartItem] = useState([]);
+  const [isLogIn, setIsLogin] = useState(false);
   const handleAddItem = (newItem) => {
     const existingIndex = cartItem.findIndex((item) => item.id === newItem.id);
 
@@ -29,13 +30,18 @@ function CartContextProvider(props) {
 
     setCartItem(updatedItems);
   };
+  const logInstateHandler = (val) => {
+    setIsLogin(val);
+  };
 
   const contextVal = {
+    isLoggedIn: isLogIn,
     item: cartElements,
     cartItem: cartItem,
     totalItems: cartElements.length,
     addItem: handleAddItem,
     removeItem: handlerRemoveItem,
+    setLogInInfo: logInstateHandler,
   };
   return (
     <cartContext.Provider value={contextVal}>
