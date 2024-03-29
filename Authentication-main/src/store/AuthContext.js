@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const AuthContext = createContext({
@@ -7,6 +7,13 @@ const AuthContext = createContext({
   login: () => {},
   logout: () => {},
 });
+useEffect(() => {
+  if (token) {
+    setTimeout(() => {
+      logoutHandler();
+    }, 5 * 60 * 1000);
+  }
+}, []);
 
 export const AuthProvider = ({ children }) => {
   const history = useHistory();
