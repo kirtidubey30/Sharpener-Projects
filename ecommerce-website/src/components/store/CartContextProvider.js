@@ -3,7 +3,10 @@ import cartContext from "./cart-context.js";
 import cartElements from "../Data/cartElements.js";
 function CartContextProvider(props) {
   const [cartItem, setCartItem] = useState([]);
-  const [isLogIn, setIsLogin] = useState(false);
+  // const [isLogIn, setIsLogin] = useState(false);
+  const [isLogIn, setIsLogin] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
   const handleAddItem = (newItem) => {
     const existingIndex = cartItem.findIndex((item) => item.id === newItem.id);
 
@@ -14,8 +17,10 @@ function CartContextProvider(props) {
         quantity: updatedCartItems[existingIndex].quantity + 1,
       };
       setCartItem(updatedCartItems);
+      console.log("item added in cart for exisitng user = ", updatedCartItems);
     } else {
       setCartItem([...cartItem, { ...newItem, quantity: 1 }]);
+      console.log("item added in cart for new user = ", cartItem);
     }
   };
 
@@ -30,10 +35,13 @@ function CartContextProvider(props) {
 
     setCartItem(updatedItems);
   };
+  // const logInstateHandler = (val) => {
+  //   setIsLogin(val);
+  // };
   const logInstateHandler = (val) => {
     setIsLogin(val);
+    localStorage.setItem("isLoggedIn", val ? "true" : "false"); // Set isLoggedIn in localStorage
   };
-
   const contextVal = {
     isLoggedIn: isLogIn,
     item: cartElements,

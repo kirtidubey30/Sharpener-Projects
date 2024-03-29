@@ -140,7 +140,7 @@ function MoviesList() {
         </div>
         <div className={classes.moviesDetails}>
           <div className={classes.listHeading}>LISTS : </div>
-          {moviesList?.length == 0 ? (
+          {moviesList?.length === 0 ? (
             <div className={classes.nodata}>No data found</div>
           ) : (
             moviesList.map((movies) => (

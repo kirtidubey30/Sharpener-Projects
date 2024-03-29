@@ -28,7 +28,7 @@ const ContactUsComponent = () => {
       throw new Error("Something went wrong");
     }
     const data = await response.json();
-    console.log("Data added succesfully :", formData);
+    console.log("Data added succesfully :" + formData + "data =" + data);
     setFormData({
       name: "",
       email: "",

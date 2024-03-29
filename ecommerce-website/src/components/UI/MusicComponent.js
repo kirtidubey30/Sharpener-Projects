@@ -1,13 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import productsArr from "../Data/productsArr";
 import classes from "./MusicComponent.module.css";
 import cartContext from "../store/cart-context";
 import { Link } from "react-router-dom";
 const MusicComponent = () => {
   const ectx = useContext(cartContext);
-  useEffect(() => {
-    console.log("ectx from MusicComponent =", ectx);
-  }, ectx);
   return (
     <section id="music" className={classes.container}>
       <h2>MUSIC</h2>

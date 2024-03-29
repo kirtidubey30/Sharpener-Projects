@@ -1,39 +1,50 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Header.module.css";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation hook
+import cartContext from "../store/cart-context";
 
 function Header(props) {
   const { setCartOpen } = props;
-  const location = useLocation(); // Get the current location object
+  const cartCtx = useContext(cartContext);
+
+  const location = useLocation();
   const isHome = location.pathname === "/home";
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  const handleStoreClick = () => {
+    if (isLoggedIn) {
+      window.location.href = "/store";
+    } else {
+      window.location.href = "/login";
+    }
+  };
+
   return (
     <header>
       <ul>
         <li>
-          <Link
-            to="/home"
-            className={isHome ? "headersection active" : "headersection"}
-          >
+          <Link to="/home" className={classes.headersection}>
             HOME
           </Link>
         </li>
         <li>
-          <Link to="/store" className="headersection">
+          <button className={classes.storeTab} onClick={handleStoreClick}>
             STORE
-          </Link>
+          </button>
         </li>
         <li>
-          <Link to="/about" className="headersection">
+          <Link to="/about" className={classes.headersection}>
             ABOUT
           </Link>
         </li>
         <li>
-          <Link to="/contactUs" className="headersection">
+          <Link to="/contactUs" className={classes.headersection}>
             CONTACT US
           </Link>
         </li>
         <li>
-          <Link to="/login" className="headersection">
+          <Link to="/login" className={classes.headersection}>
+            {/* {isLoggedIn ? "PROFILE" : "LOGIN"} */}
             LOGIN
           </Link>
         </li>

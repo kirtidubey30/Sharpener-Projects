@@ -81,3 +81,9 @@ header .play-btn {
   background: inherit;
   color: #56ccf2;
 }
+.storeTab {
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
