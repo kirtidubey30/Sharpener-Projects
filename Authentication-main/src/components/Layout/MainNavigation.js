@@ -1,57 +1,3 @@
-// import { Link } from "react-router-dom";
-// import { AuthContext } from "../../store/AuthContext.js";
-// import classes from "./MainNavigation.module.css";
-// import { useEffect } from "react";
-// import React from "react";
-
-// const MainNavigation = () => {
-//   const authCtx = AuthContext();
-//   return (
-//     <header className={classes.header}>
-//       <Link to="/">
-//         <div className={classes.logo}>React Auth</div>
-//       </Link>
-//       <nav>
-//         <ul>
-//           {/* {!authCtx.isLoggedIn && (
-//             <li>
-//               <Link to="/auth">Login</Link>
-//             </li>
-//           )}
-
-//           {authCtx.isLoggedIn && (
-//             <>
-//               <li>
-//                 <Link to="/profile">Profile</Link>
-//               </li>
-//               <li>
-//                 <button onClick={authCtx.logout}>Logout</button>
-//               </li>
-//             </>
-//           )} */}
-
-//           {/* {!authCtx.isLoggedIn && (
-//             <li>
-//               <Link to="/auth">Login</Link>
-//             </li>
-//           )}
-
-//           <>
-//             <li>
-//               <Link to="/profile">Profile</Link>
-//             </li>
-//             <li>
-//               <button onClick={authCtx.logout}>Logout</button>
-//             </li>
-//           </> */}
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default MainNavigation;
-
 import { Link, withRouter } from "react-router-dom";
 import AuthContext from "../../store/AuthContext.js";
 import classes from "./MainNavigation.module.css";
@@ -71,7 +17,7 @@ const MainNavigation = () => {
         <div className={classes.logo}>React Auth</div>
       </Link>
       <nav>
-        {/* <ul>
+        <ul>
           {!isLoggedIn && (
             <li>
               <Link to="/auth">Login</Link>
@@ -88,8 +34,8 @@ const MainNavigation = () => {
               <button>Logout</button>
             </li>
           )}
-        </ul> */}
-        <ul>
+        </ul>
+        {/* <ul>
           {!isLoggedIn && (
             <li>
               <Link to="/auth">Login</Link>
@@ -103,7 +49,7 @@ const MainNavigation = () => {
           <li>
             <button onClick={() => authCtx.logout()}>Logout</button>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </header>
   );

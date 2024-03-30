@@ -9,7 +9,8 @@ const AuthForm = () => {
   const isLoggedIn = authCtx.isLoggedIn;
   const enteredEmail = useRef();
   const enteredPass = useRef();
-  const history = useHistory;
+
+  // const history = useHistory;
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -36,7 +37,7 @@ const AuthForm = () => {
           //success
           res.json().then((data) => {
             // authCtx.setToken(data.idToken);
-            history.replace("/");
+            // history.replace("/");
             authCtx.login(data.idToken);
             console.log("User Logged in Successfully with id :", data?.localId);
             // localStorage.setItem({ token: data.idToken });
@@ -47,6 +48,8 @@ const AuthForm = () => {
             window.alert(data.error.message);
           });
         }
+        enteredEmail.current.value = "";
+        enteredPass.current.value = "";
       });
     } else {
       //call the api to create new user
@@ -80,7 +83,6 @@ const AuthForm = () => {
     }
   };
   return (
-    // !isLoggedIn && (
     <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
@@ -115,10 +117,6 @@ const AuthForm = () => {
       </form>
     </section>
   );
-  // );
-  // : (
-  //   <UserProfile />
-  // );
 };
 
 export default AuthForm;
