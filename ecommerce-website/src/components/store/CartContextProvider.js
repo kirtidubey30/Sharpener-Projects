@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cartContext from "./cart-context.js";
 import cartElements from "../Data/cartElements.js";
 function CartContextProvider(props) {
   const [cartItem, setCartItem] = useState([]);
+  const [userEmail, setUserEmail] = useState("");
   // const [isLogIn, setIsLogin] = useState(false);
   const [isLogIn, setIsLogin] = useState(
     localStorage.getItem("isLoggedIn") === "true"
@@ -17,10 +18,8 @@ function CartContextProvider(props) {
         quantity: updatedCartItems[existingIndex].quantity + 1,
       };
       setCartItem(updatedCartItems);
-      console.log("item added in cart for exisitng user = ", updatedCartItems);
     } else {
       setCartItem([...cartItem, { ...newItem, quantity: 1 }]);
-      console.log("item added in cart for new user = ", cartItem);
     }
   };
 
@@ -35,9 +34,9 @@ function CartContextProvider(props) {
 
     setCartItem(updatedItems);
   };
-  // const logInstateHandler = (val) => {
-  //   setIsLogin(val);
-  // };
+  const setUserEmailHandler = (email) => {
+    setUserEmail(email);
+  };
   const logInstateHandler = (val) => {
     setIsLogin(val);
     localStorage.setItem("isLoggedIn", val ? "true" : "false"); // Set isLoggedIn in localStorage
@@ -50,6 +49,8 @@ function CartContextProvider(props) {
     addItem: handleAddItem,
     removeItem: handlerRemoveItem,
     setLogInInfo: logInstateHandler,
+    setUserEmail: setUserEmailHandler, // Add setUserEmail to the context
+    userEmail: userEmail,
   };
   return (
     <cartContext.Provider value={contextVal}>

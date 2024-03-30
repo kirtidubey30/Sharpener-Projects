@@ -8,6 +8,8 @@ const cartContext = React.createContext({
   addItem: (item) => {},
   removeItem: (id) => {},
   setLogInInfo: (val) => {},
+  setUserEmail: (email) => {}, // Add setUserEmail to the context
+  userEmail: "",
 });
 
 export default cartContext;

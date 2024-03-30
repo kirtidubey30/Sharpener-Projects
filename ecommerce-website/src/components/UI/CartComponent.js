@@ -19,9 +19,81 @@ function CartComponent(props) {
   useEffect(() => {
     if (ectx.cartItem.length > 0) {
       calculateTotalVal();
+      // Call the backend API to store cart items whenever the cart or user email is updated
+      saveCartItemsToBackend();
     }
-  }, [ectx.cartItem]);
+  }, [ectx.cartItem, ectx.userEmail]);
+  const removeSpecialCharacters = (email) => {
+    // Remove special characters (@ and .)
+    return email.replace(/[.@]/g, "");
+  };
+  // const saveCartItemsToBackend = async () => {
+  //   try {
+  //     // Prepare the data to be sent to the backend
+  //     const cartData = ectx.cartItem.map((item) => ({
+  //       id: item.id,
+  //       title: item.title,
+  //       price: item.price,
+  //       quantity: item.quantity,
+  //     }));
 
+  //     // Make the POST request to the backend API
+  //     const response = await fetch(
+  //       `https://crudcrud.com/api/ccf13201b7534ea488b9f00c864442d0/cart${removeSpecialCharacters(
+  //         ectx.userEmail
+  //       )}`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(cartData),
+  //       }
+  //     );
+
+  //     // Check if the request was successful
+  //     if (!response.ok) {
+  //       throw new Error("Failed to save cart items to backend");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error saving cart items to backend:", error.message);
+  //     // You can add user-friendly error handling here
+  //   }
+  // };
+
+  const saveCartItemsToBackend = async () => {
+    try {
+      // Prepare the data to be sent to the backend
+      const cartData = ectx.cartItem.map((item) => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+
+      // Log the constructed URL
+      const url = `https://crudcrud.com/api/ccf13201b7534ea488b9f00c864442d0/cart${removeSpecialCharacters(
+        ectx.userEmail
+      )}`;
+      console.log("Backend URL:", url);
+
+      // Make the POST request to the backend API
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartData),
+      });
+
+      // Check if the request was successful
+      if (!response.ok) {
+        throw new Error("Failed to save cart items to backend");
+      }
+    } catch (error) {
+      console.error("Error saving cart items to backend:", error.message);
+    }
+  };
   return (
     <section
       id="cart"

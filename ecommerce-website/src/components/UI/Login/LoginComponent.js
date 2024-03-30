@@ -33,6 +33,7 @@ function LoginComponent() {
         console.log("successfully logged In ");
         window.location.replace("/");
         logCtx.setLogInInfo(true);
+        logCtx.setUserEmail(enteredEmail.current.value);
       } else {
         res.json().then((data) => {
           console.log("Error =", data.error.message);

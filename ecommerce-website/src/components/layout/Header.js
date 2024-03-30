@@ -53,7 +53,10 @@ function Header(props) {
           className={classes["cart-holder"]}
           onClick={() => setCartOpen(true)}
         >
-          cart<span className={classes["cart-number"]}>1</span>
+          cart
+          <span className={classes["cart-number"]}>
+            {cartCtx.cartItem.length}
+          </span>
         </a>
       </ul>
       <h1>The Generics</h1>
