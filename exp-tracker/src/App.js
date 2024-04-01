@@ -10,10 +10,18 @@ function App() {
   useEffect(() => {
     console.log("val of ectx from App.js =", eCtx);
   }, [eCtx]);
+  const handleOnClickLogin = () => {
+    eCtx.setSignedUpVal(true);
+  };
+  const handleOnClickSignUp = () => {
+    eCtx.setIsLoggedIn(false);
+  };
   return (
     <div className="App">
-      <SignupScreen />
-      {eCtx.isSignedUp && <LoginScreen />}
+      <SignupScreen handleOnClickLogin={handleOnClickLogin} />
+      {eCtx.isSignedUp && (
+        <LoginScreen handleOnClickSignUp={handleOnClickSignUp} />
+      )}
       {eCtx.isLoggedIn && <HomePage />}
     </div>
   );

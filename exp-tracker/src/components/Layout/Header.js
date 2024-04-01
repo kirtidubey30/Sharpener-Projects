@@ -17,7 +17,6 @@ function Header(props) {
   const handleCompleteNow = () => {
     props.profileCompletehandler(true);
     setUpdateProfileVal(true);
-    //callApi
 
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAxzAIOBoHPU5htChQHAUapN3PH-NkYens",

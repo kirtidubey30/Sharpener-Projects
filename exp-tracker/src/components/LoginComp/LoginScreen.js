@@ -1,12 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./LoginScreen.module.css";
 import { useContext } from "react";
 import cartContext from "../store/cart-context";
 
-function LoginScreen() {
+function LoginScreen(props) {
   const enteredMail = useRef();
   const enteredPass = useRef();
   const eCtx = useContext(cartContext);
+  useEffect(() => {
+    console.log("val of eCtx from Login.js =", eCtx);
+  }, [eCtx]);
   const [isLoginFormOpen, setLoginForm] = useState(true);
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -49,6 +52,44 @@ function LoginScreen() {
     enteredMail.current.value = "";
     enteredPass.current.value = "";
   };
+  const handleForGotPass = (event) => {
+    event.preventDefault();
+    setLoginForm(true);
+    if (enteredMail.current.value.length > 0) {
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAxzAIOBoHPU5htChQHAUapN3PH-NkYens",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredMail.current.value,
+            requestType: "PASSWORD_RESET",
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((res) => {
+        if (res.ok) {
+          // succesfully signed up
+          console.log("User has successfully Loginned .");
+          res.json().then((data) => {
+            console.log("data recevied from forgotPassa pi call", data);
+          });
+          window.alert(
+            "You would recieve a password reset link in your mail id "
+          );
+        } else {
+          res.json().then((data) => {
+            console.log("Error Occured :", data.error.message);
+            // eCtx.setIsLoggedIn(false);
+            window.alert(data.error.message);
+          });
+        }
+      });
+    } else {
+      window.alert("Please enter the email");
+    }
+  };
   return (
     <>
       {isLoginFormOpen && (
@@ -71,8 +112,14 @@ function LoginScreen() {
                 required
               />
             </div>
+            <div className={classes.textLink}>
+              <b onClick={handleForGotPass}>Forgot Password</b>
+            </div>
             <div>
               <button type="submit">Login</button>
+            </div>
+            <div className={classes.textLink}>
+              New User ?<b onClick={props.handleOnClickSignUp}>Sign Up</b>
             </div>
           </form>
         </div>

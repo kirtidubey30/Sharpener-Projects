@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import classes from "./SignupScreen.module.css";
 import cartContext from "../store/cart-context";
-function SignupScreen() {
+function SignupScreen(props) {
   const enteredMail = useRef();
   const enteredPass = useRef();
   const [isSignUpFormOpen, setSignUpForm] = useState(true);
@@ -49,6 +49,10 @@ function SignupScreen() {
     enteredMail.current.value = "";
     enteredPass.current.value = "";
   };
+  const handleOnClickLogin = () => {
+    props.handleOnClickLogin();
+    setSignUpForm(false);
+  };
   return (
     <>
       {isSignUpFormOpen && (
@@ -73,6 +77,9 @@ function SignupScreen() {
             </div>
             <div>
               <button type="submit">Signup</button>
+            </div>
+            <div className={classes.textLink}>
+              Existing User ?<b onClick={() => handleOnClickLogin()}>Login</b>
             </div>
           </form>
         </div>
