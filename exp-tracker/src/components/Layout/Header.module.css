@@ -85,3 +85,19 @@
   display: flex;
   gap: 2rem;
 }
+.logOut {
+  background-color: #51c2c1;
+  color: white;
+  height: 2rem;
+  border: none;
+  width: 4rem;
+  cursor: pointer;
+}
+.logOut:hover {
+  background-color: #3fa7a5;
+  color: white;
+  height: 2rem;
+  border: none;
+  cursor: pointer;
+  width: 4rem;
+}

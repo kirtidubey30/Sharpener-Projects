@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import classes from "./Header.module.css";
+import cartContext from "../store/cart-context";
 function Header(props) {
   const [isupdateProfile, setUpdateProfileVal] = useState(false);
   const headerVal = "Wecome to Expense Tracker !!!";
   const profileStatusText = "Your Profile is incomplete";
   const token = localStorage.getItem("token");
+  const eCtx = useContext(cartContext);
+  const handleLogOut = (event) => {
+    event.preventDefault();
+    localStorage.setItem("token", "");
+    eCtx.setIsLoggedIn(false);
+    window.location = "/";
+  };
   const handleCompleteNow = () => {
     props.profileCompletehandler(true);
     setUpdateProfileVal(true);
@@ -48,6 +56,9 @@ function Header(props) {
               <i>Complete Now</i>
             </span>
           </span>
+          <button onClick={handleLogOut} className={classes.logOut}>
+            LogOut
+          </button>
         </span>
       )}
     </div>
