@@ -36,8 +36,12 @@ function SignupScreen() {
           res.json().then((data) => {
             console.log("Error Occured :", data.error.message);
             window.alert(data.error.message);
-
-            eCtx.setSignedUpVal(false);
+            if ((data.error.message = "EMAIL_EXISTS")) {
+              eCtx.setSignedUpVal(true);
+              setSignUpForm(false);
+            } else {
+              eCtx.setSignedUpVal(false);
+            }
           });
         }
       });

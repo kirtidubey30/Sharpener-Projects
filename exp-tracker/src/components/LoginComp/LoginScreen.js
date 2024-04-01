@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./LoginScreen.module.css";
 import { useContext } from "react";
 import cartContext from "../store/cart-context";
@@ -32,10 +32,6 @@ function LoginScreen() {
           // succesfully signed up
           console.log("User has successfully Loginned .");
           res.json().then((data) => {
-            console.log(
-              "data.idToken that is set to localStorage =",
-              data.idToken
-            );
             localStorage.setItem("token", data?.idToken);
             setLoginForm(false);
             eCtx.setIsLoggedIn(true);

@@ -1,0 +1,82 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 1rem;
+  border-top: 2px solid #00000033;
+  border-bottom: 2px solid #00000033;
+}
+.headerText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.completeNowCss span i {
+  color: #5439f7;
+  margin: 0.2rem;
+}
+.completeNowCss {
+  background-color: #e8dbdb;
+  padding: 0.3rem;
+  border-radius: 10px;
+}
+.headerContainerFrmUpdate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 2rem;
+  padding: 1rem;
+  border-top: 2px solid #00000033;
+  border-bottom: 2px solid #00000033;
+}
+.contactDetails {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.contactDetails button {
+  width: 4rem;
+  height: 2rem;
+  background: white;
+  color: red;
+  border: 2px solid red;
+  cursor: pointer;
+}
+.contactDetails button:hover {
+  width: 4rem;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.849);
+  color: red;
+  border: 2px solid red;
+  cursor: pointer;
+}
+.inputFieldContainer span,
+.inputFieldContainer span label {
+  margin: 1rem;
+}
+.inputFieldContainer div button {
+  width: 5rem;
+  height: 2rem;
+  background: #b17070;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.inputFieldContainer div button:hover {
+  width: 5rem;
+  height: 2rem;
+  background: #9b5d5d;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.inputFieldContainer div {
+  margin: 2rem;
+  display: flex;
+}
