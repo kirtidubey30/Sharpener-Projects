@@ -3,8 +3,10 @@
   width: 15rem;
   inset: 0;
   background: aliceblue;
+  max-height: 18rem;
   min-height: 10rem;
   padding: 2rem;
+  overflow-y: auto;
   display: flex;
   gap: 3rem;
   justify-content: center;
