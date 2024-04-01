@@ -55,6 +55,48 @@ function UpdateProfile(props) {
       window.alert("Please fill atleast one field to update");
     }
   };
+  const handleVerifyEmail = (event) => {
+    event.preventDefault();
+    fetch(
+      "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAxzAIOBoHPU5htChQHAUapN3PH-NkYens",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          idToken: idToken,
+          requestType: "VERIFY_EMAIL",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log("Otp has been sent to =", data);
+          oncCancelHandler();
+          window.alert(
+            "Otp has been succesfully sent to the registered email id"
+          );
+        });
+        // setSignUpForm(false);
+        // eCtx.setSignedUpVal(true);
+      } else {
+        res.json().then((data) => {
+          let msg = "";
+          console.log("Error Occured :", data.error.message);
+          if (data.error.message === "INVALID_ID_TOKEN") {
+            msg =
+              "The user's credential is no longer valid. The user must sign in again";
+          } else if (data.error.message === "USER_NOT_FOUND") {
+            msg =
+              "There is no user record corresponding to this identifier. The user may have been deleted.";
+          }
+
+          msg.length > 0 ? window.alert(msg) : window.alert(data.error.message);
+        });
+      }
+    });
+  };
   return (
     <div>
       <div className={classes.headerContainerFrmUpdate}>
@@ -67,7 +109,7 @@ function UpdateProfile(props) {
             </span>
           </span>
         </span>
-        <form onSubmit={handleOnSubMitofUpdate}>
+        <form>
           <div className={classes.contactDetails}>
             <h2>Contact details</h2>
 
@@ -84,8 +126,13 @@ function UpdateProfile(props) {
               <label>Profile Photo URL</label>
               <input type="text" ref={eneteredUrl} />
             </span>
-            <div>
-              <button type="submit">Update</button>
+            <div className={classes.btnContainer}>
+              <button type="submit" onClick={handleOnSubMitofUpdate}>
+                Update
+              </button>
+              <button type="verify" onClick={handleVerifyEmail}>
+                verify Email id{" "}
+              </button>
             </div>
           </div>
         </form>

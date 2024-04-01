@@ -65,6 +65,7 @@
   height: 2rem;
   background: #b17070;
   color: white;
+  white-space: nowrap;
   border: none;
   cursor: pointer;
 }
@@ -79,4 +80,8 @@
 .inputFieldContainer div {
   margin: 2rem;
   display: flex;
+}
+.btnContainer {
+  display: flex;
+  gap: 2rem;
 }

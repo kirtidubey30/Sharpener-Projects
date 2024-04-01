@@ -14,7 +14,7 @@ function Header(props) {
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAxzAIOBoHPU5htChQHAUapN3PH-NkYens",
       {
-        method: "GET",
+        method: "POST",
         body: JSON.stringify({
           idToken: token,
         }),
