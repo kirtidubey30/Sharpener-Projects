@@ -5,6 +5,7 @@ const cartContext = createContext({
   setSignedUpVal: (val) => {},
   isLoggedIn: false,
   setIsLoggedIn: (val) => {},
+  isPremiusActive: false,
 });
 
 export default cartContext;
