@@ -17,7 +17,7 @@ function HomePage() {
       {isProfileCompleteClicked && (
         <UpdateProfile profileCompletehandler={profileCompletehandler} />
       )}
-      <AddExpense />
+      {!isProfileCompleteClicked && <AddExpense />}
     </>
   );
 }

@@ -48,7 +48,9 @@ function Header(props) {
     <div className={classes.headerContainer}>
       {!isupdateProfile && (
         <span className={classes.headerText}>
-          <span>{headerVal}</span>
+          <span>
+            <h2>{headerVal}</h2>
+          </span>
           <span className={classes.completeNowCss}>
             {profileStatusText}
             <span onClick={handleCompleteNow} style={{ cursor: "pointer" }}>

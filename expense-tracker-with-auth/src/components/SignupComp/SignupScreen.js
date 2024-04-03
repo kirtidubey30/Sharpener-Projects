@@ -1,9 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import classes from "./SignupScreen.module.css";
 import cartContext from "../store/cart-context";
 function SignupScreen() {
   const enteredMail = useRef();
   const enteredPass = useRef();
+  const [isSignUpFormOpen, setSignUpForm] = useState(true);
   const eCtx = useContext(cartContext);
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@ function SignupScreen() {
           // succesfully signed up
           console.log("User has successfully signed up.");
           window.alert("User has successfully signed up.");
+          setSignUpForm(false);
           eCtx.setSignedUpVal(true);
         } else {
           res.json().then((data) => {
@@ -44,25 +46,34 @@ function SignupScreen() {
     enteredPass.current.value = "";
   };
   return (
-    <div className={classes.formcontainer}>
-      <form onSubmit={handleOnSubmit}>
-        <h2>SIGNUP</h2>
-        <div>
-          <input type="email" placeholder="Email" ref={enteredMail} required />
+    <>
+      {isSignUpFormOpen && (
+        <div className={classes.formcontainer}>
+          <form onSubmit={handleOnSubmit}>
+            <h2>SIGNUP</h2>
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                ref={enteredMail}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                ref={enteredPass}
+                required
+              />
+            </div>
+            <div>
+              <button type="submit">Signup</button>
+            </div>
+          </form>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            ref={enteredPass}
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Signup</button>
-        </div>
-      </form>
-    </div>
+      )}
+    </>
   );
 }
 

@@ -165,7 +165,7 @@ function AddExpense() {
               onChange={onAmountChange}
             />
           </div>
-          <div>
+          <div className={classes.addExp}>
             <label>Description :</label>
             <input
               type="text"
@@ -173,7 +173,7 @@ function AddExpense() {
               onChange={onDescChange}
             />
           </div>
-          <div>
+          <div className={classes.addExp}>
             <label>Category </label>
             <select value={addExpDetail.category} onChange={onCategoryChange}>
               <option value="Movie">Movie</option>
@@ -185,8 +185,12 @@ function AddExpense() {
             </select>
           </div>
           <div>
-            <button onClick={handleAddExpense}>Submit</button>
-            <button onClick={handleOnCancel}>Cancel</button>
+            <button className={classes.submitBtn} onClick={handleAddExpense}>
+              Submit
+            </button>
+            <button className={classes.cancelBtn} onClick={handleOnCancel}>
+              Cancel
+            </button>
           </div>
         </div>
       </form>

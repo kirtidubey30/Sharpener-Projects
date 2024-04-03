@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./LoginScreen.module.css";
 import { useContext } from "react";
 import cartContext from "../store/cart-context";
@@ -7,6 +7,7 @@ function LoginScreen() {
   const enteredMail = useRef();
   const enteredPass = useRef();
   const eCtx = useContext(cartContext);
+  const [isLoginFormOpen, setLoginForm] = useState(true);
   const handleOnSubmit = (event) => {
     event.preventDefault();
     if (
@@ -32,6 +33,7 @@ function LoginScreen() {
           console.log("User has successfully Loginned .");
           res.json().then((data) => {
             localStorage.setItem("token", data?.idToken);
+            setLoginForm(false);
             eCtx.setIsLoggedIn(true);
           });
           window.alert("User has successfully Loginned.");
@@ -48,25 +50,34 @@ function LoginScreen() {
     enteredPass.current.value = "";
   };
   return (
-    <div className={classes.formcontainer}>
-      <form onSubmit={handleOnSubmit}>
-        <h2> LOGIN </h2>
-        <div>
-          <input type="email" placeholder="Email" ref={enteredMail} required />
+    <>
+      {isLoginFormOpen && (
+        <div className={classes.formcontainer}>
+          <form onSubmit={handleOnSubmit}>
+            <h2> LOGIN </h2>
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                ref={enteredMail}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                ref={enteredPass}
+                required
+              />
+            </div>
+            <div>
+              <button type="submit">Login</button>
+            </div>
+          </form>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            ref={enteredPass}
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
+      )}
+    </>
   );
 }
 

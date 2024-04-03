@@ -14,8 +14,19 @@ function ExpListAdded(props) {
     return totalAmount;
   };
 
+  const handleDownload = () => {
+    const data = JSON.stringify(expList, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "expenses.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleActivatePremium = () => {
-    // Toggle dark-theme class on body element
     document.body.classList.toggle("dark-theme");
   };
 
@@ -24,7 +35,14 @@ function ExpListAdded(props) {
       <h2>Expense List</h2>
       <h3>Total Amount Spent : Rs. {calculateTotalAmt()}/-</h3>
       {totalAmtVal.current >= 10000 && (
-        <button onClick={handleActivatePremium}>Activate Premium</button>
+        <>
+          <button className="activateBtn" onClick={handleActivatePremium}>
+            Activate Premium
+          </button>
+          <button className="downloadBtn" onClick={handleDownload}>
+            Download
+          </button>
+        </>
       )}
       <ul>
         {Object.keys(expList).map((key) => (
@@ -33,6 +51,7 @@ function ExpListAdded(props) {
             <strong>Description:</strong> {expList[key].description},{" "}
             <strong>Category:</strong> {expList[key].category}
             <button
+              className="editBtn"
               onClick={() =>
                 props.handleOnEdit(
                   key,
@@ -44,7 +63,12 @@ function ExpListAdded(props) {
             >
               Edit
             </button>
-            <button onClick={() => props.handleOnDelete(key)}>Delete</button>
+            <button
+              className="delteBtn-Exp"
+              onClick={() => props.handleOnDelete(key)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
