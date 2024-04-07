@@ -1,9 +1,29 @@
-import HomePage from "./home/page.js";
+"use client";
+import Layout from "@/components/layout/Layout";
+import MeetupList from "@/components/meetups/MeetupList";
 
 export default function Home() {
+  const dummy_meetUps = [
+    {
+      id: "m1",
+      title: "A First MeetUp",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg/429px-Altja_j%C3%B5gi_Lahemaal.jpg",
+      address: "Lahemaa National Park in Estonia",
+      description: "Lahemaa National Park in Estonia.",
+    },
+    {
+      id: "m2",
+      title: "A First MeetUp",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg/429px-Altja_j%C3%B5gi_Lahemaal.jpg",
+      address: "Lahemaa National Park in Estonia",
+      description: "Lahemaa National Park in Estonia.",
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Main Page.js
-    </main>
+    <Layout>
+      <MeetupList meetups={dummy_meetUps} />
+    </Layout>
   );
 }
