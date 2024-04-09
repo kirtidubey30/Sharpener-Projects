@@ -1,7 +1,16 @@
+import { useState } from "react";
 import Card from "../ui/Card";
 import classes from "./MeetupItem.module.css";
 import Link from "next/link";
+
 function MeetupItem(props) {
+  const [selectedMeetUpId, setSelectedMeetUpId] = useState("");
+
+  const handleSelectedMeetup = (id) => {
+    setSelectedMeetUpId(id);
+    localStorage.setItem("selectedMeetUpId", id); // Update localStorage with the new ID
+  };
+
   return (
     <li className={classes.item}>
       <Card>
@@ -14,7 +23,9 @@ function MeetupItem(props) {
         </div>
         <div className={classes.actions}>
           <Link href={`${props.id}`}>
-            <button>Show Details</button>
+            <button onClick={() => handleSelectedMeetup(props.id)}>
+              Show Details
+            </button>
           </Link>
         </div>
       </Card>
