@@ -1,5 +1,5 @@
 "use client";
-import MeetupsDetails from "@/components/meetups/MeetupsDetails";
+import MeetupsDetails from "../../components/meetups/MeetupsDetails";
 import React from "react";
 
 function MeetupDetail() {

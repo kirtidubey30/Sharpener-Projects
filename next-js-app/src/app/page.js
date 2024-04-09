@@ -1,29 +1,40 @@
 "use client";
-import Layout from "@/components/layout/Layout";
-import MeetupList from "@/components/meetups/MeetupList";
+import { useEffect, useState } from "react";
+import Layout from "../components/layout/Layout";
+import MeetupList from "../components/meetups/MeetupList";
 
 export default function Home() {
-  const dummy_meetUps = [
-    {
-      id: "m1",
-      title: "A First MeetUp",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg/429px-Altja_j%C3%B5gi_Lahemaal.jpg",
-      address: "Lahemaa National Park in Estonia",
-      description: "Lahemaa National Park in Estonia.",
-    },
-    {
-      id: "m2",
-      title: "A First MeetUp",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg/429px-Altja_j%C3%B5gi_Lahemaal.jpg",
-      address: "Lahemaa National Park in Estonia",
-      description: "Lahemaa National Park in Estonia.",
-    },
-  ];
+  const [meetups, setMeetups] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/fetch-meetups", {
+          method: "GET",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const dataObj = await res.json();
+
+        const updatedData = dataObj.data.map((item) => ({
+          id: item._id,
+          image: item.image,
+          title: item.title,
+          address: item.address,
+        }));
+        setMeetups(updatedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Layout>
-      <MeetupList meetups={dummy_meetUps} />
+      <MeetupList meetups={meetups} />
     </Layout>
   );
 }
